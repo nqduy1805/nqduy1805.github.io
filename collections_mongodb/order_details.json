@@ -1,0 +1,23 @@
+{ 
+    "_id" : ObjectId("611e355fb230000032000f1e"), 
+    "order_id" : "611e355fb230000032000f1b", 
+    "product_id" : "611c9aa11a410000b5001d6b", 
+    "order_qty" : 1.0, 
+    "order_price" : 1533.0, 
+    "order_subtotal" : 1533.0, 
+    "order_size" : null, 
+    "updated_at" : ISODate("2021-08-20T03:49:51.048+0000"), 
+    "created_at" : ISODate("2021-08-19T10:41:35.205+0000")
+}
+{ 
+    "_id" : ObjectId("611f26323f010000e6000d08"), 
+    "order_id" : "611e355fb230000032000f1b", 
+    "product_id" : "611c99961a410000b5001d68", 
+    "order_qty" : 3.0, 
+    "order_price" : 395.1, 
+    "order_sale" : 439.0, 
+    "order_subtotal" : 1185.43, 
+    "order_size" : null, 
+    "updated_at" : ISODate("2021-08-20T03:49:46.568+0000"), 
+    "created_at" : ISODate("2021-08-20T03:49:06.293+0000")
+}

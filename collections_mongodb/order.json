@@ -1,0 +1,7 @@
+{ 
+    "_id" : ObjectId("611e355fb230000032000f1b"), 
+    "user_id" : "611e1bb47820000022003d54", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-19T10:41:35.195+0000"), 
+    "created_at" : ISODate("2021-08-19T10:41:35.195+0000")
+}

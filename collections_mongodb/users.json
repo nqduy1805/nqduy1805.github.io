@@ -1,0 +1,8 @@
+{ 
+    "_id" : ObjectId("611e1bb47820000022003d54"), 
+    "name" : "Duy", 
+    "email" : "1@gmai.com", 
+    "password" : "$2y$10$e25RAujn8/VHfj4X27w75OKxQzvCU3we39UhUq33pHjF8EiIw7tZ2", 
+    "updated_at" : ISODate("2021-08-19T08:52:04.942+0000"), 
+    "created_at" : ISODate("2021-08-19T08:52:04.942+0000")
+}

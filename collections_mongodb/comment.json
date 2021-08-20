@@ -1,0 +1,198 @@
+{ 
+    "_id" : ObjectId("611d3df41a410000b5001d72"), 
+    "comment" : "1", 
+    "name" : "a", 
+    "product_id" : "611c9aa11a410000b5001d6b", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-18T17:05:56.651+0000"), 
+    "created_at" : ISODate("2021-08-18T17:05:56.651+0000")
+}
+{ 
+    "_id" : ObjectId("611d3e351a410000b5001d73"), 
+    "comment" : "Tuyet voi", 
+    "name" : "Duy", 
+    "product_id" : "611c9aa11a410000b5001d6b", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-18T17:07:01.867+0000"), 
+    "created_at" : ISODate("2021-08-18T17:07:01.867+0000")
+}
+{ 
+    "_id" : ObjectId("611d3e3e1a410000b5001d74"), 
+    "comment" : "oke", 
+    "name" : "Duy", 
+    "product_id" : "611c9aa11a410000b5001d6b", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-18T17:07:10.950+0000"), 
+    "created_at" : ISODate("2021-08-18T17:07:10.950+0000")
+}
+{ 
+    "_id" : ObjectId("611d3e5e1a410000b5001d75"), 
+    "comment" : "hay", 
+    "name" : "A", 
+    "product_id" : "611c9aa11a410000b5001d6b", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-18T17:07:42.702+0000"), 
+    "created_at" : ISODate("2021-08-18T17:07:42.702+0000")
+}
+{ 
+    "_id" : ObjectId("611d3f391a410000b5001d76"), 
+    "comment" : "OKE", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c9aa11a410000b5001d6b", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-18T17:11:21.656+0000"), 
+    "created_at" : ISODate("2021-08-18T17:11:21.656+0000")
+}
+{ 
+    "_id" : ObjectId("611db5e97820000022003d34"), 
+    "comment" : "Đẹp", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c9a5e1a410000b5001d6a", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T01:37:45.422+0000"), 
+    "created_at" : ISODate("2021-08-19T01:37:45.422+0000")
+}
+{ 
+    "_id" : ObjectId("611db6127820000022003d36"), 
+    "comment" : "Đẹp", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c99961a410000b5001d68", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T01:38:26.140+0000"), 
+    "created_at" : ISODate("2021-08-19T01:38:26.140+0000")
+}
+{ 
+    "_id" : ObjectId("611db6407820000022003d38"), 
+    "comment" : "Đẹp", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c9ae81a410000b5001d6c", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T01:39:12.677+0000"), 
+    "created_at" : ISODate("2021-08-19T01:39:12.677+0000")
+}
+{ 
+    "_id" : ObjectId("611db6687820000022003d3a"), 
+    "comment" : "Đẹp", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c9e371a410000b5001d6e", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T01:39:52.853+0000"), 
+    "created_at" : ISODate("2021-08-19T01:39:52.853+0000")
+}
+{ 
+    "_id" : ObjectId("611df8e17820000022003d40"), 
+    "comment" : "Your comment", 
+    "name" : "Name", 
+    "product_id" : null, 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:23:29.330+0000"), 
+    "created_at" : ISODate("2021-08-19T06:23:29.330+0000")
+}
+{ 
+    "_id" : ObjectId("611df8ef7820000022003d41"), 
+    "comment" : "a", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : null, 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:23:43.118+0000"), 
+    "created_at" : ISODate("2021-08-19T06:23:43.118+0000")
+}
+{ 
+    "_id" : ObjectId("611df8f57820000022003d42"), 
+    "comment" : "a", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : null, 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:23:49.303+0000"), 
+    "created_at" : ISODate("2021-08-19T06:23:49.303+0000")
+}
+{ 
+    "_id" : ObjectId("611df8f87820000022003d43"), 
+    "comment" : "a", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : null, 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:23:52.825+0000"), 
+    "created_at" : ISODate("2021-08-19T06:23:52.825+0000")
+}
+{ 
+    "_id" : ObjectId("611df8fa7820000022003d44"), 
+    "comment" : "a", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : null, 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:23:54.629+0000"), 
+    "created_at" : ISODate("2021-08-19T06:23:54.629+0000")
+}
+{ 
+    "_id" : ObjectId("611df94a7820000022003d45"), 
+    "comment" : "a", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : null, 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:25:14.223+0000"), 
+    "created_at" : ISODate("2021-08-19T06:25:14.223+0000")
+}
+{ 
+    "_id" : ObjectId("611df9dd7820000022003d46"), 
+    "comment" : "tember, the Porto Alegre, Brazil–born, London-based upstart was tapped to be the sole women’s wear presenter at Pitti Uomo, the biannual mens", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : null, 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:27:41.075+0000"), 
+    "created_at" : ISODate("2021-08-19T06:27:41.075+0000")
+}
+{ 
+    "_id" : ObjectId("611dfb6e7820000022003d47"), 
+    "comment" : "Thank you so much for putting this together Jeremy. Most of these seem like common sense but it is amazing how many times I see new employees having the worst days of their life because managers/leaders don’t want to be “bothered” with the new guy.", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611a9299224500007c006bed", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:34:22.378+0000"), 
+    "created_at" : ISODate("2021-08-19T06:34:22.378+0000")
+}
+{ 
+    "_id" : ObjectId("611dfb8c7820000022003d48"), 
+    "comment" : "Thank you so much for putting this together Jeremy. Most of these seem like common sense but it is amazing how many times I see new employees having the worst days of their life because managers/leaders don’t want to be “bothered” with the new guy.", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611a9299224500007c006bed", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:34:52.042+0000"), 
+    "created_at" : ISODate("2021-08-19T06:34:52.042+0000")
+}
+{ 
+    "_id" : ObjectId("611dfbb47820000022003d49"), 
+    "comment" : "Thank you so much for putting this together Jeremy. Most of these seem like common sense but it is amazing how many times I see new employees having the worst days of their life because managers/leaders don’t want to be “bothered” with the new guy.", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611a9299224500007c006bed", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-19T06:35:32.460+0000"), 
+    "created_at" : ISODate("2021-08-19T06:35:32.460+0000")
+}
+{ 
+    "_id" : ObjectId("611f2f673f010000e6000d09"), 
+    "comment" : "đẹp", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c9b181a410000b5001d6d", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-20T04:28:23.720+0000"), 
+    "created_at" : ISODate("2021-08-20T04:28:23.720+0000")
+}
+{ 
+    "_id" : ObjectId("611f2f673f010000e6000d0a"), 
+    "comment" : "đẹp", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c9b181a410000b5001d6d", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-20T04:28:23.720+0000"), 
+    "created_at" : ISODate("2021-08-20T04:28:23.720+0000")
+}
+{ 
+    "_id" : ObjectId("611f2f6e3f010000e6000d0b"), 
+    "comment" : "đẹp", 
+    "name" : "Nguyễn Quốc Duy", 
+    "product_id" : "611c9b181a410000b5001d6d", 
+    "comment_parent" : NumberInt(0), 
+    "updated_at" : ISODate("2021-08-20T04:28:30.769+0000"), 
+    "created_at" : ISODate("2021-08-20T04:28:30.769+0000")
+}

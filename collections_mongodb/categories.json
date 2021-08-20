@@ -1,0 +1,136 @@
+{ 
+    "_id" : ObjectId("611a32ec224500007c006bd8"), 
+    "category_name" : "SHOES", 
+    "category_parent" : "0", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:42:04.119+0000"), 
+    "created_at" : ISODate("2021-08-16T09:42:04.119+0000")
+}
+{ 
+    "_id" : ObjectId("611a32f4224500007c006bd9"), 
+    "category_name" : "Sneakers", 
+    "category_parent" : "611a32ec224500007c006bd8", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:42:12.413+0000"), 
+    "created_at" : ISODate("2021-08-16T09:42:12.413+0000")
+}
+{ 
+    "_id" : ObjectId("611a32fb224500007c006bda"), 
+    "category_name" : "High heels", 
+    "category_parent" : "611a32ec224500007c006bd8", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:42:19.079+0000"), 
+    "created_at" : ISODate("2021-08-16T09:42:19.079+0000")
+}
+{ 
+    "_id" : ObjectId("611a3314224500007c006bdb"), 
+    "category_name" : "Doll shoes", 
+    "category_parent" : "611a32ec224500007c006bd8", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:42:44.764+0000"), 
+    "created_at" : ISODate("2021-08-16T09:42:44.764+0000")
+}
+{ 
+    "_id" : ObjectId("611a331c224500007c006bdc"), 
+    "category_name" : "Boots", 
+    "category_parent" : "611a32ec224500007c006bd8", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:42:52.928+0000"), 
+    "created_at" : ISODate("2021-08-16T09:42:52.928+0000")
+}
+{ 
+    "_id" : ObjectId("611a33fe224500007c006bde"), 
+    "category_name" : "HAND BAG", 
+    "category_parent" : "0", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:46:38.129+0000"), 
+    "created_at" : ISODate("2021-08-16T09:46:38.129+0000")
+}
+{ 
+    "_id" : ObjectId("611a3409224500007c006bdf"), 
+    "category_name" : "Small bag", 
+    "category_parent" : "611a33fe224500007c006bde", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:46:49.426+0000"), 
+    "created_at" : ISODate("2021-08-16T09:46:49.426+0000")
+}
+{ 
+    "_id" : ObjectId("611a3412224500007c006be0"), 
+    "category_name" : "Medium bag", 
+    "category_parent" : "611a33fe224500007c006bde", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:46:58.108+0000"), 
+    "created_at" : ISODate("2021-08-16T09:46:58.108+0000")
+}
+{ 
+    "_id" : ObjectId("611a341a224500007c006be1"), 
+    "category_name" : "Large bag", 
+    "category_parent" : "611a33fe224500007c006bde", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:47:06.359+0000"), 
+    "created_at" : ISODate("2021-08-16T09:47:06.359+0000")
+}
+{ 
+    "_id" : ObjectId("611a3423224500007c006be2"), 
+    "category_name" : "Backpack", 
+    "category_parent" : "611a33fe224500007c006bde", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:47:15.654+0000"), 
+    "created_at" : ISODate("2021-08-16T09:47:15.654+0000")
+}
+{ 
+    "_id" : ObjectId("611a342c224500007c006be3"), 
+    "category_name" : "Wallet - Clutch", 
+    "category_parent" : "611a33fe224500007c006bde", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:47:24.587+0000"), 
+    "created_at" : ISODate("2021-08-16T09:47:24.587+0000")
+}
+{ 
+    "_id" : ObjectId("611a3442224500007c006be4"), 
+    "category_name" : "ACCESSORY", 
+    "category_parent" : "0", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:47:46.060+0000"), 
+    "created_at" : ISODate("2021-08-16T09:47:46.060+0000")
+}
+{ 
+    "_id" : ObjectId("611a3449224500007c006be5"), 
+    "category_name" : "Glasses", 
+    "category_parent" : "611a3442224500007c006be4", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:47:53.654+0000"), 
+    "created_at" : ISODate("2021-08-16T09:47:53.654+0000")
+}
+{ 
+    "_id" : ObjectId("611a3454224500007c006be6"), 
+    "category_name" : "Jewelry", 
+    "category_parent" : "611a3442224500007c006be4", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:48:04.564+0000"), 
+    "created_at" : ISODate("2021-08-16T09:48:04.564+0000")
+}
+{ 
+    "_id" : ObjectId("611a345c224500007c006be7"), 
+    "category_name" : "Sock", 
+    "category_parent" : "611a3442224500007c006be4", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T09:48:12.589+0000"), 
+    "created_at" : ISODate("2021-08-16T09:48:12.589+0000")
+}
+{ 
+    "_id" : ObjectId("611a8fe9224500007c006beb"), 
+    "category_name" : "BLOG", 
+    "category_parent" : "0", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T16:18:49.726+0000"), 
+    "created_at" : ISODate("2021-08-16T16:18:49.726+0000")
+}
+{ 
+    "_id" : ObjectId("611a922e224500007c006bec"), 
+    "category_name" : "Ridiculously", 
+    "category_parent" : "611a8fe9224500007c006beb", 
+    "category_status" : "0", 
+    "updated_at" : ISODate("2021-08-16T16:28:30.362+0000"), 
+    "created_at" : ISODate("2021-08-16T16:28:30.362+0000")
+}
