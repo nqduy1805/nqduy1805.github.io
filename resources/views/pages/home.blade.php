@@ -47,10 +47,6 @@
 						@endforeach
 					</div><!-- //TOVAR WRAPPER -->
 				</div><!-- //ROW -->
-
-				
-
-			
 			</div><!-- //CONTAINER -->
 		</section><!-- //TOVAR SECTION -->
 		

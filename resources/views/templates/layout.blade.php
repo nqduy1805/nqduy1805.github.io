@@ -99,7 +99,7 @@
 								<li class="clearfix">
 									<img class="cart_item_product" src="{{asset('image/product/'.$cr->product->product_image)}}" alt="" />
 									<a href="product-page.html" class="cart_item_title">{{$cr->product->product_name}}</a>
-									<span class="cart_item_price">{{$cr->order_qty}} × ${{$cr->order_price}}</span>
+									<span class="cart_item_price">{{$cr->order_qty}} × <a>${{$cr->order_sale}}</a></span>
 									<a href="javascript:void(0);" onclick="event.preventDefault();
                                        document.getElementById('product-remove1').submit();" ><span>Delete</span> <i>X</i></a>
 								</li>
@@ -134,7 +134,7 @@
                                   @endforeach
 							</ul>
 							<div class="cart_total">
-								<div class="clearfix"><span class="cart_subtotal">bag subtotal: <b>{{$total}}</b></span></div>
+								<div class="clearfix"><span class="cart_subtotal">bag subtotal: <b><a>$</a>{{$total}}</b></span></div>
 								<a class="btn active" href="{{URL::to('shopping_bag')}}">Detail bag</a>
 							</div>
 						</div>
@@ -452,8 +452,8 @@
 			</div><!-- //COPYRIGHT -->
 		</footer><!-- //FOOTER -->
 	</div><!-- //PAGE -->
-
-<!-- TOVAR MODAL CONTENT -->
+{{-- 082120QD create purchase feature in quickview--}}
+ <!-- TOVAR MODAL CONTENT -->
 <div id="modal-body" class="clearfix" style="">
    <div id="tovar_content" style="opacity: 1;"><div class="tover_view_page element_fade_in">
    <div class="tover_view_header clearfix">
@@ -486,10 +486,11 @@
               @csrf
                 <input id="prod_id" name="product_id" type="hidden" value="">
                 <div class="tovar_view_title">Handy Sweetest Clutch</div>
-                <div class="tovar_article">88-305-676</div>
+                <div class="tovar_article"></div>
                 <div class="clearfix tovar_brend_price">
                   <div class="pull-left tovar_brend">Việt Nam</div>
-                  <div class="pull-right tovar_view_price">999.000đ</div>
+                  <div class="pull-right tovar_view_price price_qv sale_price"></div>
+                   <div class="pull-right tovar_view_price  price_qv_2 saled_price"></div>
                 </div>
                
                 <div class="tovar_size_select">
@@ -501,9 +502,10 @@
                   </div>               
                 </div>
                 <div class="tovar_view_btn">
-                  	 <select class="basic" name='size'>
-			           	</select>
-                  <a class="add_bag" href="javascript:void(0);" ><i class="fa fa-shopping-cart"></i>Add to bag</a>
+                	<div class='select_quickview'>
+                	</div>
+				<a><input type='submit' class="add_bag" name='' value='Add to bag'>	</a>
+			<a class="add_lovelist" href="javascript:void(0);" ><i class="fa fa-heart"></i></a>
            </div>
       </form>
          <div class="tovar_shared clearfix">
@@ -532,10 +534,12 @@
              method:"POST",
              data:{product_id:product_id,_token:$token}, 
                    success:function(data){
+                  $('.select_quickview').html(data.product_size);
                  $('#prod_id').val(product_id);
                  $('.tovar_view_title').text(data.product_name);
-                 $('.tovar_article').text(data._id);
-                 $('.tovar_view_price').text(data.product_price);
+                 $('.tovar_article').text(data.product_id);
+                 $('.price_qv').text('$'+data.product_price);
+                 $('.price_qv_2').text('$'+data.price_sale);
                  $('.src_image').attr('src', ' https://localhost/mongo/public/image/product/'+data.product_image);
                  $('.src_image1').attr('src', 'https://localhost/mongo/public/image/product/'+data.product_image1);
                  $('.src_image2').attr('src', 'https://localhost/mongo/public/image/product/'+data.product_image2);

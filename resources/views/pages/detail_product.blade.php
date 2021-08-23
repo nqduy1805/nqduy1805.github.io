@@ -79,7 +79,7 @@
 									</div>
 								 <select class="basic" name='size'>
 								 	@foreach($size as $si)
-			           	 <option  value='{{$si}}'  >{{$si}}</option>
+			           	 <option  value='{{$si}}'>{{$si}}</option>
 			           	 @endforeach
 			           	</select>
 								</div>

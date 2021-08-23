@@ -4,6 +4,7 @@
  <div class="panel panel-default">
     <div class="panel-heading">
      Detail Product Table
+
     </div>
     <div>
          @if (session('status'))
@@ -30,7 +31,7 @@
             <th data-breakpoints="xs">Quantity</th>
             <th data-breakpoints="xs">Subtotal</th>
             <th data-breakpoints="xs">Size</th>
-            <th data-breakpoints="xs">Sale</th>
+            <th data-breakpoints="xs">Pricec</th>
          </tr>
         </thead>
         <tbody>
@@ -38,16 +39,18 @@
           <tr data-expanded="true">
           	<td><image src="{{asset('image/product/'.$od->product->product_image)}}" width="40" heigh="40"></td>
             <td>{{$od->product->product_name}}</td>
-            <td>{{$od->order_price}}</td>
+            <td>${{$od->order_price}}</td>
             <td>{{$od->order_qty}}</td>
-            <td>{{$od->order_subtotal}}</td>
+            <td>${{$od->order_subtotal}}</td>
             <td>{{$od->order_size}}</td>
-            <td>{{$od->order_sale}}</td>
+            <td>${{$od->order_sale}}</td>
           </tr>
           @endforeach
 
         </tbody>
       </table>
+      <a href="{{URL::to('complete/'.$od->order_id)}}" class="btn btn-primary ">Complete</a>
+
     </div>
   </div>
 </div>

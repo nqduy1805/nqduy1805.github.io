@@ -14,7 +14,7 @@
 				<h3 class="pull-left"><b>Shopping bag</b></h3>
 				
 				<div class="pull-right">
-					<a href="women.html" >Back to shop<i class="fa fa-angle-right"></i></a>
+					<a href="home" >Back to shop<i class="fa fa-angle-right"></i></a>
 				</div>
 			</div><!-- //CONTAINER -->
 		</section><!-- //PAGE HEADER -->
@@ -54,7 +54,7 @@
 											<li class="variation-Size">Size: <span>{{$c->order_size}}</span></li>
 										</ul>
 									</td>
-	               <td ><a class=" saled_price" >$</a><span class=" saled_price product-price ">{{$c->order_price}}</span>    $<span class="product-price sale_price">{{$c->order_sale}}</span></td>						
+	               <td ><a class=" saled_price" >$</a><span class=" saled_price product-price ">{{$c->order_sale}}</span>    $<span class="product-price sale_price">{{$c->order_price}}</span></td>						
 	               			<td class="product-quantity">
 										<div class="tovar_size_select">
                      <div class="clearfix">
@@ -122,7 +122,7 @@
 						
 						<!-- BAG TOTALS -->
 						<div class="sidepanel widget_bag_totals">
-							<h3>BAG TOTALS</h3>
+							<h3>BAG TOTALS </h3>
 							<table class="bag_total">
 								<tr class="cart-subtotal clearfix">
 									<th>Sub total </th>
@@ -132,18 +132,23 @@
 									<th>SHIPPING</th>	
 									<td>Free</td>
 								</tr>
+								<tr class="shipping clearfix">
+									<th>discount</th>	
+									  <td >-$<span class="total_cart3">{{$discount}}</span></td>
+								</tr>
 								<tr class="total clearfix">
-									  <td >$<span class="total_cart1">{{$total}}</span></td>
+								<th>Total</th>	
+									  <td >$<span class="total_cart1">{{$total-$discount}}</span></td>
 								</tr>
 							</table>
-							<form class="coupon_form" action="javascript:void(0);" method="get">
+							<form class="coupon_form" action="" method="get">
 								<input type="text" name="coupon" value="Have a coupon?" onFocus="if (this.value == 'Have a coupon?') this.value = '';" onBlur="if (this.value == '') this.value = 'Have a coupon?';" />
 								<input type="submit" value="Apply">
 							</form>
-							@if(isset(Auth::user()->id))
-							<a class="btn active" href="checkout" >Check out</a>
+							@if($cart->count()>0)
+							<a class="btn active" href="checkout1" >Check out</a>
 							@else
-							<a class="btn active" href="login" >Check out</a>
+							<a class="btn active" href="home" >Check out</a>
 							@endif
 							<a class="btn inactive" href="home" >Continue shopping</a>
 						</div><!-- //REGISTRATION FORM -->

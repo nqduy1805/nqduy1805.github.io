@@ -1,7 +1,94 @@
 { 
-    "_id" : ObjectId("611e355fb230000032000f1b"), 
-    "user_id" : "611e1bb47820000022003d54", 
+    "_id" : ObjectId("612253b3953c0000660011fa"), 
+    "user_id" : "612132056d7b00006100591a", 
+    "order_status" : "complete", 
+    "updated_at" : ISODate("2021-08-23T03:20:31.530+0000"), 
+    "created_at" : ISODate("2021-08-22T13:40:03.473+0000"), 
+    "adress1" : "Phú Yên", 
+    "adress2" : "Phú Yên", 
+    "email" : "0@gmail.com", 
+    "name" : "Nguyễn Quốc Duy", 
+    "phone" : "0344332280", 
+    "postcode" : "131231", 
+    "delivery" : "Excluseve", 
+    "card_number" : "13123", 
+    "payment" : "Discover", 
+    "discount" : -200.0, 
+    "order_total" : 2903.0499999999997, 
+    "status" : "complete"
+}
+{ 
+    "_id" : ObjectId("6122547a953c0000660011fe"), 
+    "user_id" : "612132056d7b00006100591a", 
     "order_status" : "draft", 
-    "updated_at" : ISODate("2021-08-19T10:41:35.195+0000"), 
-    "created_at" : ISODate("2021-08-19T10:41:35.195+0000")
+    "updated_at" : ISODate("2021-08-22T13:43:22.874+0000"), 
+    "created_at" : ISODate("2021-08-22T13:43:22.874+0000")
+}
+{ 
+    "_id" : ObjectId("61225583953c0000660011ff"), 
+    "postcode" : "123", 
+    "adress1" : "a", 
+    "adress2" : "a", 
+    "name" : "a", 
+    "phone" : "a", 
+    "email" : "a", 
+    "updated_at" : ISODate("2021-08-23T03:20:48.608+0000"), 
+    "created_at" : ISODate("2021-08-22T13:47:47.355+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : -407.63599999999997, 
+    "order_status" : "complete", 
+    "order_total" : 1630.544
+}
+{ 
+    "_id" : ObjectId("6122576a953c000066001202"), 
+    "postcode" : "1213", 
+    "adress1" : "a", 
+    "adress2" : "a", 
+    "name" : "a", 
+    "phone" : "a", 
+    "email" : "a", 
+    "updated_at" : ISODate("2021-08-23T03:21:44.602+0000"), 
+    "created_at" : ISODate("2021-08-22T13:55:54.011+0000"), 
+    "delivery" : "Excluseve", 
+    "card_number" : "12321", 
+    "payment" : "Discover", 
+    "discount" : -407.63599999999997, 
+    "order_status" : "complete", 
+    "order_total" : 1630.544
+}
+{ 
+    "_id" : ObjectId("612257d2953c000066001205"), 
+    "postcode" : "121", 
+    "adress1" : "a", 
+    "adress2" : "a", 
+    "name" : "a", 
+    "phone" : "a", 
+    "email" : "a", 
+    "updated_at" : ISODate("2021-08-23T03:19:36.054+0000"), 
+    "created_at" : ISODate("2021-08-22T13:57:38.128+0000"), 
+    "delivery" : "Excluseve", 
+    "card_number" : "12321", 
+    "payment" : "Skrill", 
+    "discount" : -407.63599999999997, 
+    "order_status" : "processing", 
+    "order_total" : 1630.544
+}
+{ 
+    "_id" : ObjectId("612259b7953c00006600120d"), 
+    "postcode" : "1312", 
+    "adress1" : "a", 
+    "adress2" : "a", 
+    "name" : "a", 
+    "phone" : "a", 
+    "email" : "a", 
+    "updated_at" : ISODate("2021-08-22T14:05:59.201+0000"), 
+    "created_at" : ISODate("2021-08-22T14:05:43.858+0000"), 
+    "delivery" : "Excluseve", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 7196.4
 }

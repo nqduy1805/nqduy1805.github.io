@@ -95,4 +95,8 @@
 
         </div>
         </div>
+        <script src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript">
+    CKEDITOR.replace('ckeditor');
+</script>
 @endsection

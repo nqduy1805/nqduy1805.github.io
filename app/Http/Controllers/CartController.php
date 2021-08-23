@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Order_details;
+use App\Models\Coupon;
 use Carbon\Carbon;
 use Cart;
 use session;
@@ -16,10 +17,14 @@ class CartController extends Controller
 {
    public function add_bag(Request $request,$id)
     {
-       $product = Product::find($id);
+        if($id==0)
+        {
+            $id=$request->product_id;
+        }
+        $product = Product::find($id);
         if(isset(Auth::user()->id)){
         $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-         if($draft) $order_id=$draft->id;
+        if($draft) $order_id=$draft->id;
          else 
         {
         $order = new Order();
@@ -28,6 +33,7 @@ class CartController extends Controller
         $order->save();
         $order_id=$order->id;
         }
+        session()->put('order_id',$order_id);
         $order_dt= Order_details::where('order_id',$order_id)->where('product_id',$id)->where('order_size',$request->size)->first();
         if($order_dt)
         {
@@ -59,7 +65,7 @@ class CartController extends Controller
         $data['options']['size']=$request->size;
         Cart::add($data); 
         }
-        return redirect('detail_product/'.$id);
+        return redirect()->back();
     }
      public function delete_bag(Request $request,$rowId)
     {
@@ -69,7 +75,8 @@ class CartController extends Controller
         }
         else
         Cart::remove($rowId);
-        return redirect('/shopping_bag');
+        return redirect()->back();
+
     }
      public function update_bag(Request $request)
     {
@@ -84,27 +91,14 @@ class CartController extends Controller
         }
 
     }
-      public function checkout()
-    {
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $draft->order_status='processing'; 
-        $draft->save();
-        return redirect('home')->with(get_defined_vars());
 
-    }
-     
-    public function shopping_bag()
+    public function shopping_bag(Request $request)
     {
-        if(isset(Auth::user()->id)){
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $cart=Order_details::where('order_id',$draft->id)->orderBy('updated_at','desc')->get();
-        $total=Order_details::where('order_id',$draft->id)->sum('order_subtotal');   
-         }
-            else{
-                 $cart=Cart::content();
-                 $total=Cart::subtotal();
-            }
-                     $category=Category::get();
+        if($request->coupon)
+        {
+        $coupon=Coupon::where('coupon_code',$request->coupon)->first();
+        session()->put('coupon',$coupon);
+        }
         return view('pages.shopping_bag')->with(get_defined_vars());
     }
 }

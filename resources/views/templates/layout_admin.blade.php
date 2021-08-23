@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <head>
 <title>Admin</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -81,9 +82,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
-            <ul class="sidebar-menu" id="nav-accordion">                
+            <ul class="sidebar-menu" id="nav-accordion">  
+             <li class="sub-menu">
+                    <a href="{{URL::to('dashboard')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dash Board</span>
+                    </a>
+                </li>              
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{route('category.index')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Category</span>
                     </a>
@@ -93,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{route('product.index')}}">
                         <i class="fa fa-book"></i>
                         <span>Product</span>
                     </a>
@@ -103,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{route('blog.index')}}">
                         <i class="fa fa-th"></i>
                         <span>Blog</span>
                     </a>
@@ -113,7 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                  <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{route('order.index')}}">
                         <i class="fa fa-bullhorn"></i>
                         <span>Order</span>
                     </a>
@@ -121,14 +128,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{route('order.index')}}">Table</a></li>
                     </ul>
                 </li>
+                 <li class="sub-menu">
+                    <a href="{{route('coupon.index')}}">
+                        <i class="fa fa-tasks"></i>
+                        <span>Coupon</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{route('coupon.index')}}">Table</a></li>
+                        <li><a href="{{route('coupon.create')}}">Create</a></li>
+                    </ul>
+                </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{route('user.index')}}">
                         <i class="fa fa-tasks"></i>
                         <span>User</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{route('blog.index')}}">Table</a></li>
-                        <li><a href="{{route('blog.create')}}">Create</a></li>
+                        <li><a href="{{route('user.index')}}">Table</a></li>
+                        <li><a href="{{route('user.create')}}">Create</a></li>
                     </ul>
                 </li>
                
@@ -150,35 +167,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('backend/js/scripts.js')}}"></script>
 <script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
 <script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
-<script src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
-<script type="text/javascript">
-    CKEDITOR.replace('ckeditor');
-</script>
+
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{{asset('backend/js/flot-chart/excanvas.min.js')}}"></script><![endif]-->
 <script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
 <!-- morris JavaScript -->	
-<script>
-	$(document).ready(function() {
-		//BOX BUTTON SHOW AND CLOSE
-	   jQuery('.small-graph-box').hover(function() {
-		  jQuery(this).find('.box-button').fadeIn('fast');
-	   }, function() {
-		  jQuery(this).find('.box-button').fadeOut('fast');
-	   });
-	   jQuery('.small-graph-box .box-close').click(function() {
-		  jQuery(this).closest('.small-graph-box').fadeOut(200);
-		  return false;
-	   });
-	   
-	    //CHARTS
-	    function gd(year, day, month) {
-			return new Date(year, month - 1, day).getTime();
-		}
-		
-		
-	   
-	});
-	</script>
+
 <!-- calendar -->
 	<script type="text/javascript" src="{{asset('backend/js/monthly.js')}}"></script>
 	<script type="text/javascript">

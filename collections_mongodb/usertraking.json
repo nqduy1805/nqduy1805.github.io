@@ -1,0 +1,107 @@
+{ 
+    "_id" : ObjectId("6123797a486700004b006d94"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "30:33:17 23-08-2021", 
+    "time" : "0:1", 
+    "updated_at" : ISODate("2021-08-23T10:34:53.279+0000"), 
+    "created_at" : ISODate("2021-08-23T10:33:30.241+0000")
+}
+{ 
+    "_id" : ObjectId("612379df486700004b006d95"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "11:35:17 23-08-2021", 
+    "time" : "0:0", 
+    "updated_at" : ISODate("2021-08-23T10:35:11.731+0000"), 
+    "created_at" : ISODate("2021-08-23T10:35:11.239+0000")
+}
+{ 
+    "_id" : ObjectId("61237bca486700004b006d96"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "22:43:17 23-08-2021", 
+    "time" : NumberInt(1), 
+    "updated_at" : ISODate("2021-08-23T10:43:22.762+0000"), 
+    "created_at" : ISODate("2021-08-23T10:43:22.762+0000")
+}
+{ 
+    "_id" : ObjectId("61237bcb486700004b006d97"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "23:43:17 23-08-2021", 
+    "time" : "0.016666666666667:1", 
+    "updated_at" : ISODate("2021-08-23T10:44:00.072+0000"), 
+    "created_at" : ISODate("2021-08-23T10:43:23.200+0000")
+}
+{ 
+    "_id" : ObjectId("61237c2b486700004b006d98"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "59:44:17 23-08-2021", 
+    "time" : "0.016666666666667:1", 
+    "updated_at" : ISODate("2021-08-23T10:45:00.002+0000"), 
+    "created_at" : ISODate("2021-08-23T10:44:59.507+0000")
+}
+{ 
+    "_id" : ObjectId("61237c4e486700004b006d99"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "34:45:17 23-08-2021", 
+    "time" : "0.016666666666667:1", 
+    "updated_at" : ISODate("2021-08-23T10:46:08.774+0000"), 
+    "created_at" : ISODate("2021-08-23T10:45:34.830+0000")
+}
+{ 
+    "_id" : ObjectId("61237cdc486700004b006d9a"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "56:47:17 23-08-2021", 
+    "time" : "-0.76666666666667:47", 
+    "updated_at" : ISODate("2021-08-23T10:48:09.253+0000"), 
+    "created_at" : ISODate("2021-08-23T10:47:56.102+0000")
+}
+{ 
+    "_id" : ObjectId("61237d18486700004b006d9b"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "56:48:17 23-08-2021", 
+    "time" : "0:2", 
+    "updated_at" : ISODate("2021-08-23T10:50:06.020+0000"), 
+    "created_at" : ISODate("2021-08-23T10:48:56.296+0000")
+}
+{ 
+    "_id" : ObjectId("61237d18486700004b006d9c"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "56:48:17 23-08-2021", 
+    "time" : NumberInt(1), 
+    "updated_at" : ISODate("2021-08-23T10:48:56.715+0000"), 
+    "created_at" : ISODate("2021-08-23T10:48:56.715+0000")
+}
+{ 
+    "_id" : ObjectId("61237d61486700004b006d9d"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "09:50:17 23-08-2021", 
+    "time" : "4:9", 
+    "updated_at" : ISODate("2021-08-23T14:59:37.723+0000"), 
+    "created_at" : ISODate("2021-08-23T10:50:09.738+0000")
+}
+{ 
+    "_id" : ObjectId("61238806486700004b006d9f"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "34:35:18 23-08-2021", 
+    "date" : "2021-08-23", 
+    "time" : "0:0", 
+    "updated_at" : ISODate("2021-08-23T11:35:34.797+0000"), 
+    "created_at" : ISODate("2021-08-23T11:35:34.533+0000")
+}
+{ 
+    "_id" : ObjectId("612388f7486700004b006da0"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "35:39:18 23-08-2021", 
+    "date" : "2021-08-23", 
+    "time" : "1:30", 
+    "updated_at" : ISODate("2021-08-23T13:09:33.918+0000"), 
+    "created_at" : ISODate("2021-08-23T11:39:35.494+0000")
+}
+{ 
+    "_id" : ObjectId("6123b7dd486700004b006da1"), 
+    "ip_adress" : "::1", 
+    "date_visit" : "40:59:21 23-08-2021", 
+    "date" : "2021-08-23", 
+    "time" : "0:0", 
+    "updated_at" : ISODate("2021-08-23T14:59:41.194+0000"), 
+    "created_at" : ISODate("2021-08-23T14:59:40.953+0000")
+}

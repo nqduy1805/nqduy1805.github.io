@@ -8,8 +8,11 @@ use App\Models\Product;
 use Auth;
 use Cart;
 use App\Models\Order;
+use App\Models\Usertraking;
 use App\Models\Order_details;
 use App\Models\Comment;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -31,98 +34,55 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-                if(isset(Auth::user()->id)){
-            $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-                         if($draft)   {    $order_id=$draft->id;}
-                      else 
-                    {
-                     $order = new Order();
-                     $order->user_id=Auth::user()->id;
-                     $order->order_status='draft';
-                     $order->save();
-                     $order_id=$order->id;
-                    } 
-                     $cart=Cart::content();
-                     if($cart)
-                     {
-                         foreach($cart as $ca)
-                    {
-                    $order_dt= Order_details::where('product_id',$ca->id)->where('order_size',$ca->size)->first();
-                     if($order_dt)
-                     {
-                     $order_dt->order_qty=$ca->qty+$order_dt->order_qty;
-                     $order_dt->order_subtotal=$order_dt->order_qty*$order_dt->order_price;
-                     $order_dt->save();
-                     }else
-                     {
-                     $order_details = new Order_details();
-                     $order_details->order_id= $order_id;
-                     $order_details->product_id=$ca->id;
-                     $order_details->order_qty=(float)$ca->qty;
-                     $order_details->order_price=(float)$ca->price;
-                     $order_details->order_sale=(float)$ca->weight;
-                     $order_details->order_subtotal=(float)$ca->qty*$ca->price;
-                     $order_details->order_size=$ca->size;
-                     $order_details->save();
-                    }
-                   
-                    } 
-                    Cart::destroy();   
-                     }             
-                }
-                
-                 if(isset(Auth::user()->id)){
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $cart=Order_details::where('order_id',$draft->id)->get();
-                  $total=Order_details::get()->sum('order_subtotal');
-         }
-            else{
-                 $cart=Cart::content();
-                $total=Cart::total();
-            }
-        
-
+    public function index(Request $request)
+    {   
+       $ip_adress=$request->ip();
+       $datenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H d-m-Y');
+       $date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+       if(session('id_traking')==null)
+       {$usertraking=new Usertraking();
+           $usertraking->ip_adress=$ip_adress;
+           $usertraking->date_visit=$datenow;
+           $usertraking->date=$date;
+           $usertraking->time=1;
+           $usertraking->save();
+           session()->put('id_traking',$usertraking->id);
+       }
         $product = Product::orderBy('updated_at','desc')->limit(8)->get();  
-        $category=Category::get();
         return view('pages.home')->with(get_defined_vars());
+    }
+    public function access(Request $request)
+    {
+       $ip_adress=$request->ip();
+       $datenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H d-m-Y');
+       $date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+       if(session('id_traking')==null)
+       {$usertraking=new Usertraking();
+           $usertraking->ip_adress=$ip_adress;
+           $usertraking->date_visit=$datenow;
+           $usertraking->date=$date;
+           $usertraking->time=1;
+           $usertraking->save();
+           session()->put('id_traking',$usertraking->id);
+       }
+             return redirect('home');
     }
     public function detail_product($id)
     {
     
-                 if(isset(Auth::user()->id)){
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $cart=Order_details::where('order_id',$draft->id)->get();
-                  $total=Order_details::get()->sum('order_subtotal');
-         }
-            else{
-                 $cart=Cart::content();
-                $total=Cart::total();
-            }
-        $category=Category::get();
        $product = Product::find($id);
+       $product->product_view= $product->product_view+1;
+       $product->save();
        $size=$product->product_size;
-        $size=explode(',',$size);
+       $size=explode(',',$size);
        $other_product = Product::where("category_id",$product->category_id)->limit(4)->get();
-
+       
         return view('pages.detail_product')->with(get_defined_vars());
     }
      public function all_product(Request $request,$id)
     {
         $select_ft="";
         $select_ft1="";
-         //header
-                 if(isset(Auth::user()->id)){
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $cart=Order_details::where('order_id',$draft->id)->get();
-                  $total=Order_details::get()->sum('order_subtotal');
-         }
-            else{
-                 $cart=Cart::content();
-                $total=Cart::total();
-            }
-        $category=Category::get();
          //filter
         if(isset($_GET['amount_price']))
         {
@@ -167,10 +127,25 @@ class HomeController extends Controller
         return view('pages.all_product')->with(get_defined_vars());
     }
       public function quickview(Request $request)
-    {
-    
-            $product=Product::find($request->product_id);
-      return $product;
+    {        $product=Product::find($request->product_id);
+            $product->product_view= $product->product_view+1;
+            $product->save();
+            $output['product_name']=$product->product_name;
+            $output['product_id']=$request->product_id;
+            $output['product_image']=$product->product_image;
+            $output['product_image1']=$product->product_image1;
+            $output['product_image2']=$product->product_image2;
+            $output['product_image3']=$product->product_image3;
+            $output['product_price']=$product->product_price;
+            $output['price_sale']=$product->product_price*(100-$product->product_sale)/100;
+            $size=explode(',',$product->product_size);
+            $option=' <select class="basic" name="size">';
+            foreach($size as $si){
+                         $option=$option.'<option  value='.$si.'>'.$si.'</option>';}
+            $option=$option.'</select>';
+
+            $output['product_size']=$option;
+            return $output;
     }
        public function load_comment(Request $request)
     {
@@ -203,21 +178,8 @@ class HomeController extends Controller
         $comment->save();
     }
          public function sale(Request $request)
-    { 
-        if(isset(Auth::user()->id)){
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $cart=Order_details::where('order_id',$draft->id)->orderBy('updated_at','desc')->get();
-        $total=Order_details::where('order_id',$draft->id)->sum('order_subtotal');   
-         }
-            else{
-                 $cart=Cart::content();
-                 $total=Cart::subtotal();
-            }
-                     $category=Category::get();
-                             $product = Product::orderBy('updated_at','desc')->limit(8)->get();  
-
+    {          $product = Product::orderBy('updated_at','desc')->limit(8)->get();  
                return view('pages.sale')->with(get_defined_vars());
-
     }
      
 }

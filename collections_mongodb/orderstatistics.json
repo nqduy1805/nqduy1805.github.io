@@ -1,0 +1,180 @@
+{ 
+    "_id" : ObjectId("612313c8486700004b006d7b"), 
+    "date" : "22 08 2021", 
+    "revenue" : 1630.544, 
+    "profit" : 1630.544, 
+    "total_order" : NumberInt(1), 
+    "updated_at" : ISODate("2021-08-23T03:19:36.052+0000"), 
+    "created_at" : ISODate("2021-08-23T03:19:36.052+0000")
+}
+{ 
+    "_id" : ObjectId("612313ff486700004b006d7c"), 
+    "date" : "23 08 2021", 
+    "revenue" : 6164.138, 
+    "profit" : 6164.138, 
+    "total_order" : NumberInt(3), 
+    "updated_at" : ISODate("2021-08-23T03:21:44.597+0000"), 
+    "created_at" : ISODate("2021-08-23T03:20:31.527+0000")
+}
+{ 
+    "_id" : ObjectId("61233d47486700004b006d7d"), 
+    "date" : "27 08 2021", 
+    "revenue" : NumberInt(13999), 
+    "profit" : NumberInt(2800), 
+    "total_order" : NumberInt(19), 
+    "updated_at" : ISODate("2021-08-23T06:16:39.595+0000"), 
+    "created_at" : ISODate("2021-08-23T06:16:39.595+0000")
+}
+{ 
+    "_id" : ObjectId("61233d48486700004b006d7e"), 
+    "date" : "27 08 2021", 
+    "revenue" : NumberInt(13999), 
+    "profit" : NumberInt(2800), 
+    "total_order" : NumberInt(19), 
+    "updated_at" : ISODate("2021-08-23T06:16:40.674+0000"), 
+    "created_at" : ISODate("2021-08-23T06:16:40.674+0000")
+}
+{ 
+    "_id" : ObjectId("61233d82486700004b006d7f"), 
+    "date" : "29 08 2021", 
+    "revenue" : NumberInt(12999), 
+    "profit" : NumberInt(1800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:17:38.940+0000"), 
+    "created_at" : ISODate("2021-08-23T06:17:38.940+0000")
+}
+{ 
+    "_id" : ObjectId("61233d83486700004b006d80"), 
+    "date" : "29 08 2021", 
+    "revenue" : NumberInt(12999), 
+    "profit" : NumberInt(1800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:17:39.504+0000"), 
+    "created_at" : ISODate("2021-08-23T06:17:39.504+0000")
+}
+{ 
+    "_id" : ObjectId("61233d93486700004b006d81"), 
+    "date" : "28 08 2021", 
+    "revenue" : NumberInt(14999), 
+    "profit" : NumberInt(3800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:17:55.715+0000"), 
+    "created_at" : ISODate("2021-08-23T06:17:55.715+0000")
+}
+{ 
+    "_id" : ObjectId("61233d94486700004b006d82"), 
+    "date" : "28 08 2021", 
+    "revenue" : NumberInt(14999), 
+    "profit" : NumberInt(3800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:17:56.375+0000"), 
+    "created_at" : ISODate("2021-08-23T06:17:56.375+0000")
+}
+{ 
+    "_id" : ObjectId("61233da6486700004b006d83"), 
+    "date" : "26 08 2021", 
+    "revenue" : NumberInt(17999), 
+    "profit" : NumberInt(2800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:14.526+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:14.526+0000")
+}
+{ 
+    "_id" : ObjectId("61233da7486700004b006d84"), 
+    "date" : "26 08 2021", 
+    "revenue" : NumberInt(17999), 
+    "profit" : NumberInt(2800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:15.369+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:15.369+0000")
+}
+{ 
+    "_id" : ObjectId("61233db0486700004b006d85"), 
+    "date" : "25 08 2021", 
+    "revenue" : NumberInt(11999), 
+    "profit" : NumberInt(1800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:24.850+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:24.850+0000")
+}
+{ 
+    "_id" : ObjectId("61233db1486700004b006d86"), 
+    "date" : "25 08 2021", 
+    "revenue" : NumberInt(11999), 
+    "profit" : NumberInt(1800), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:25.469+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:25.469+0000")
+}
+{ 
+    "_id" : ObjectId("61233dbc486700004b006d87"), 
+    "date" : "24 08 2021", 
+    "revenue" : NumberInt(12999), 
+    "profit" : NumberInt(1900), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:36.556+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:36.556+0000")
+}
+{ 
+    "_id" : ObjectId("61233dbd486700004b006d88"), 
+    "date" : "24 08 2021", 
+    "revenue" : NumberInt(12999), 
+    "profit" : NumberInt(1900), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:37.223+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:37.223+0000")
+}
+{ 
+    "_id" : ObjectId("61233dd0486700004b006d89"), 
+    "date" : "22 08 2021", 
+    "revenue" : NumberInt(13999), 
+    "profit" : NumberInt(2300), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:56.347+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:56.347+0000")
+}
+{ 
+    "_id" : ObjectId("61233dd0486700004b006d8a"), 
+    "date" : "22 08 2021", 
+    "revenue" : NumberInt(13999), 
+    "profit" : NumberInt(2300), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:18:56.895+0000"), 
+    "created_at" : ISODate("2021-08-23T06:18:56.895+0000")
+}
+{ 
+    "_id" : ObjectId("61233ddb486700004b006d8b"), 
+    "date" : "21 08 2021", 
+    "revenue" : NumberInt(14999), 
+    "profit" : NumberInt(2700), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:19:07.469+0000"), 
+    "created_at" : ISODate("2021-08-23T06:19:07.469+0000")
+}
+{ 
+    "_id" : ObjectId("61233ddc486700004b006d8c"), 
+    "date" : "21 08 2021", 
+    "revenue" : NumberInt(14999), 
+    "profit" : NumberInt(2700), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:19:08.120+0000"), 
+    "created_at" : ISODate("2021-08-23T06:19:08.120+0000")
+}
+{ 
+    "_id" : ObjectId("61233de7486700004b006d8d"), 
+    "date" : "20 08 2021", 
+    "revenue" : NumberInt(15999), 
+    "profit" : NumberInt(2200), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:19:19.608+0000"), 
+    "created_at" : ISODate("2021-08-23T06:19:19.608+0000")
+}
+{ 
+    "_id" : ObjectId("61233de8486700004b006d8e"), 
+    "date" : "20 08 2021", 
+    "revenue" : NumberInt(15999), 
+    "profit" : NumberInt(2200), 
+    "total_order" : NumberInt(10), 
+    "updated_at" : ISODate("2021-08-23T06:19:20.367+0000"), 
+    "created_at" : ISODate("2021-08-23T06:19:20.367+0000")
+}

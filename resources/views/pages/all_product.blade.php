@@ -77,7 +77,7 @@
 						<div class="widget_banners">
 							<a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/bn1.jpg')}}" alt="" /></a>
 							<a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/bn1.jpg')}}"alt="" /></a>
-							<a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/bn1.jpg')}}" alt="" /></a>
+							
 						</div><!-- //BANNERS WIDGET -->
 					</div><!-- //SIDEBAR -->
 					<!-- SHOP PRODUCTS -->

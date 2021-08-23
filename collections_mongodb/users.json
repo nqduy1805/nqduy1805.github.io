@@ -6,3 +6,25 @@
     "updated_at" : ISODate("2021-08-19T08:52:04.942+0000"), 
     "created_at" : ISODate("2021-08-19T08:52:04.942+0000")
 }
+{ 
+    "_id" : ObjectId("611fcbd88b6f0000fe001e28"), 
+    "name" : "Duy", 
+    "email" : "2@gmai.com", 
+    "role" : "customer", 
+    "password" : "$2y$10$hqSar/iph43.eDUj7PpCguHCDhavxZXUjewxtWlpIwDSTzZ/eQdC6", 
+    "updated_at" : ISODate("2021-08-20T15:35:52.878+0000"), 
+    "created_at" : ISODate("2021-08-20T15:35:52.878+0000")
+}
+{ 
+    "_id" : ObjectId("612132056d7b00006100591a"), 
+    "name" : "Nguyễn Quốc Duy", 
+    "email" : "0@gmail.com", 
+    "role" : "admin", 
+    "address" : "Phú Yên", 
+    "gender" : "man", 
+    "phone" : "0344332280", 
+    "status" : "on", 
+    "password" : "$2y$10$qNHUatPdwaR1hdP4oCq7ZeqQFpkko7UKjDuedoC3Q2nBgBjeY.Dha", 
+    "updated_at" : ISODate("2021-08-21T17:04:05.981+0000"), 
+    "created_at" : ISODate("2021-08-21T17:04:05.981+0000")
+}

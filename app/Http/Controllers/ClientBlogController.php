@@ -16,35 +16,14 @@ class ClientBlogController extends Controller
 {
  public function index($id)
  {
-   if(isset(Auth::user()->id)){
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $cart=Order_details::where('order_id',$draft->id)->get();
-                  $total=Order_details::get()->sum('order_subtotal');
-         }
-            else{
-                 $cart=Cart::content();
-                $total=Cart::total();
-            }
-        $category=Category::get();
          $blog = Blog::where('category_id',$id)->get();
-          $best_seller=Order_details::groupBy('product_id')->orderBy('SUM(order_qty),ASC')->limit(3)->get();
-
+        $best_seller=Order_details::groupBy('product_id')->orderBy('order_qty','ASC')->limit(3)->get();
          $blog_popular = Blog::where('category_id',$id)->orderBy('blog_view','DESC')->limit(3)->get();
         return view('pages.all_blog')->with(get_defined_vars());
     }
       
        public function detail($id)
        {
-        if(isset(Auth::user()->id)){
-        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
-        $cart=Order_details::where('order_id',$draft->id)->get();
-                  $total=Order_details::get()->sum('order_subtotal');
-         }
-            else{
-                 $cart=Cart::content();
-                $total=Cart::total();
-            }
-        $category=Category::get();
         $blog=Blog::find($id);
         $blog->blog_view=$blog->blog_view+1;
          $blog->save();
@@ -52,7 +31,6 @@ class ClientBlogController extends Controller
     }
       public function load_comment(Request $request)
     {
-    
         $blog_id = $request->blog_id;
         $comment = Comment::where('product_id',$blog_id)->get();
         $output = '';

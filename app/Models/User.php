@@ -26,10 +26,12 @@ class User extends Eloquent implements Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'role_as',
+        'role',
         'address',
         'gender',
+        'phone',
         'password',
+        'status',
     ];
 
     /**
