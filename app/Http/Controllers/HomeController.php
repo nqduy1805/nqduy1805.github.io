@@ -13,7 +13,6 @@ use App\Models\Order_details;
 use App\Models\Comment;
 use Carbon\Carbon;
 
-
 class HomeController extends Controller
 {
      
@@ -36,35 +35,12 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {   
-       $ip_adress=$request->ip();
-       $datenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H d-m-Y');
-       $date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
-       if(session('id_traking')==null)
-       {$usertraking=new Usertraking();
-           $usertraking->ip_adress=$ip_adress;
-           $usertraking->date_visit=$datenow;
-           $usertraking->date=$date;
-           $usertraking->time=1;
-           $usertraking->save();
-           session()->put('id_traking',$usertraking->id);
-       }
         $product = Product::orderBy('updated_at','desc')->limit(8)->get();  
         return view('pages.home')->with(get_defined_vars());
     }
     public function access(Request $request)
     {
-       $ip_adress=$request->ip();
-       $datenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H d-m-Y');
-       $date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
-       if(session('id_traking')==null)
-       {$usertraking=new Usertraking();
-           $usertraking->ip_adress=$ip_adress;
-           $usertraking->date_visit=$datenow;
-           $usertraking->date=$date;
-           $usertraking->time=1;
-           $usertraking->save();
-           session()->put('id_traking',$usertraking->id);
-       }
+      
              return redirect('home');
     }
     public function detail_product($id)

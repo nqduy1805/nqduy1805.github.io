@@ -58,7 +58,7 @@
 		}
 	</style>
 
-<p class="title_thongke">Statistical access</p>
+<p class="title_thongke">Statistical access | Total online: {{ $Total_user_online}}</p>
 
 <table class="table table-bordered table-dark">
   <thead>

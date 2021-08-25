@@ -111,7 +111,11 @@ public function index(Request $request)
         $Total_user_last_month=Usertraking::whereBetween('date',[$lastmonth,$thismonth])->groupBy('ip_adress')->get()->count(); 
         $Total_user_this_month=Usertraking::whereBetween('date',[$thismonth,$now])->groupBy('ip_adress')->get()->count();
         $Total_user_year=Usertraking::whereBetween('date',[$year,$now])->groupBy('ip_adress')->get()->count();
-        $Total_user=Usertraking::groupBy('ip_adress')->get()->count(); 
+        $Total_user=Usertraking::groupBy('ip_adress')->get()->count();
+
+        $usertraking=Usertraking::orderBy('updated_at','DESC')->first();
+        $usertraking2=Usertraking::orderBy('created_at','DESC')->first();
+        $Total_user_online=Usertraking::whereBetween('updated_at',[$usertraking2->created_at,$usertraking->updated_at])->groupBy('ip_adress')->get()->count(); 
 
         $Total_product=Product::count();   
         $Total_blog=Blog::count();   

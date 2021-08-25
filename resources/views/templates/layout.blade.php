@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
 	<meta charset="utf-8">
 	<title>Glammy | Modern eCommerce html Template </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,12 +21,10 @@
 	<!-- FONTS -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-	
 </head>
 <body>
-
 <!-- PRELOADER -->
 <!-- //PRELOADER -->
 
@@ -187,10 +184,9 @@
 			</div><!-- //CONTAINER -->
 		</header><!-- //HEADER -->
 		
-
+     
 		<!-- HEADER -->
 		@yield('content')
-	
 					<!-- BANNER SECTION -->
 		<section class="banner_section">
 			
@@ -369,7 +365,6 @@
 								</div><!-- //TOVAR -->
 							</li>
 							<li>
-							
 							</li>
 						</ul>
 					</div>
@@ -523,7 +518,8 @@
 </div></div>
    <div class="close_block"></div>
 </div>
-   ><!-- TOVAR MODAL CONTENT -->
+   <!-- TOVAR MODAL CONTENT -->
+     {{session()->put('page',substr(URL::current(),31));}}
                      <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
 <script type="text/javascript">
 	$('.quickview').click(function(){
@@ -539,7 +535,7 @@
                  $('.tovar_view_title').text(data.product_name);
                  $('.tovar_article').text(data.product_id);
                  $('.price_qv').text('$'+data.product_price);
-                 $('.price_qv_2').text('$'+data.price_sale);
+                 $('.price_qv_2').text('$'+Number(data.price_sale).toFixed(2));
                  $('.src_image').attr('src', ' https://localhost/mongo/public/image/product/'+data.product_image);
                  $('.src_image1').attr('src', 'https://localhost/mongo/public/image/product/'+data.product_image1);
                  $('.src_image2').attr('src', 'https://localhost/mongo/public/image/product/'+data.product_image2);
@@ -560,8 +556,20 @@
 	<script src="{{asset('frontend/js/fancySelect.js')}}"></script>
 	<script src="{{asset('frontend/js/animate.js')}}" type="text/javascript"></script>
 	<script src="{{asset('frontend/js/myscript.js')}}" type="text/javascript"></script>
-	<script type="text/javascript">
-		
-	</script>
+	<script text="text/javascript">
+	$(document).ready(function() {
+    timepage();
+    function timepage(){
+        var $token=$('#signup-token').val();
+       $.ajax({
+             url:"{{URL::to('tracking_page')}}",
+             method:"POST",
+             data:{_token:$token}, 
+                           success:function(data){
+                      }
+                  });
+	   }
+	});
+</script>
 </body>
 </html>

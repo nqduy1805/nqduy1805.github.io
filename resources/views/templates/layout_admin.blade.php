@@ -148,7 +148,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{route('user.create')}}">Create</a></li>
                     </ul>
                 </li>
-               
+               <li class="sub-menu">
+                    <a href="{{route('user.index')}}">
+                        <i class="fa fa-tasks"></i>
+                        <span>Traking</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{URL::to('traking/user')}}">User</a></li>
+                        <li><a href="{{URL::to('traking/product')}}">Product</a></li>
+                        <li><a href="{{URL::to('traking/blog')}}">Blog</a></li>
+                    </ul>
+                </li>
             </ul>            </div>
         <!-- sidebar menu end-->
     </div>
@@ -158,6 +168,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <section id="main-content">
 	<section class="wrapper">
 		@yield('content')
+             {{session()->put('page',substr(URL::current(),31));}}
+          <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+
 </section>
 </section>
 <!--main content end-->
@@ -204,5 +217,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //calendar -->
+    <script text="text/javascript">
+    $(document).ready(function() {
+    timepage();
+    function timepage(){
+        var $token=$('#signup-token').val();
+       $.ajax({
+             url:"{{URL::to('tracking_page')}}",
+             method:"POST",
+             data:{_token:$token}, 
+                           success:function(data){
+                      }
+                  });
+       }
+    });
+</script>   
 </body>
 </html>

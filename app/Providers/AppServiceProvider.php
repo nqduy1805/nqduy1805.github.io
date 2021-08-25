@@ -13,6 +13,7 @@ use App\Models\Order_details;
 use App\Models\Comment;
 use App\Models\Usertraking;
 use Carbon\Carbon;
+use App\Models\Pagetracking;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*',function($view){
+            //session()->flush();
               if(isset(Auth::user()->id)){
             $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
                          if($draft)   {    $order_id=$draft->id;}
@@ -94,20 +96,68 @@ class AppServiceProvider extends ServiceProvider
             $discount=(float)session('coupon.coupon_number');
             }
             $category=Category::get();
+
+          $ip_adress=\Request::ip();
+          $datenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H d-m-Y');
+          $date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+          if(session('id_traking')==null)
+          {$usertraking=new Usertraking();
+           $usertraking->ip_adress=$ip_adress;
+           $usertraking->date_visit=$datenow;
+           $usertraking->date=$date;
+           $usertraking->time=0;
+
+           $ip_adress='14.233.178.189';
+           $url='https://ipinfo.io/'.$ip_adress;
+           $ch=curl_init($url);
+           curl_setopt($ch,CURLOPT_RETURNTRANSFER,TRUE);
+           $data=curl_exec($ch);
+           curl_close($ch); 
+           $ar=json_decode($data);
+           $usertraking->city=$ar->city;
+           $usertraking->region=$ar->region;
+           $usertraking->country=$ar->country;
+
+           $usertraking->save();
+           session()->put('id_traking',$usertraking->id);
+       }
+
             if(session('id_traking')!=null)
             {
-            $timenow = Carbon::now('Asia/Ho_Chi_Minh')->format('i:H');
+            $timenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H');
             $usertraking=Usertraking::find(session('id_traking'));
             $date_visit=$usertraking->date_visit;
-            $minute1=substr($timenow,0,2);
-            $hour1=substr($timenow,3,2);
+            $second1=substr($timenow,0,2);
+            $minute1=substr($timenow,3,2);
+            $hour1=substr($timenow,6,2);
+            $second=substr($date_visit,0,2);
             $minute=substr($date_visit,3,2);
             $hour=substr($date_visit,6,2);
-            $minute1=(int)$minute1+(int)$hour1*60-(int)$minute-(int)$hour*60;
+            $second1=(int)$second1+(int)$minute1*60+(int)$hour1*3600-(int)$second-(int)$minute*60-(int)$hour*3600;
+            $second=(int)$second1%60;
+            $minute1=($second1-$second)/60;
             $minute=(int)$minute1%60;
             $hour=((int)$minute1-(int)$minute)/60;
-            $usertraking->time=$hour.':'.$minute;
+            $usertraking->time=$hour.':'.$minute.':'.$second;
             $usertraking->save();
+            if(session('page')!=null)
+            { $Page=Pagetracking::where('tracking_id',session('id_traking'))->where('page',session('page'))->first();
+                if($Page)
+                {
+                      $Pagetracking=Pagetracking::find($Page->id);
+                      $Pagetracking->time=(int)$second1-session('pagetime');
+                      $Pagetracking->save();
+                }
+                else{
+                $Pagetracking=new Pagetracking();
+                $Pagetracking->tracking_id=session('id_traking');
+                $Pagetracking->page=session('page');
+                $Pagetracking->time=0;
+                $Pagetracking->times=1;
+                $Pagetracking->save();
+                session()->put('pagetime',$second1);
+                }
+            }
             }
             $view->with('category',$category)->with('total',$total)->with('cart',$cart)->with('discount',$discount);
         });

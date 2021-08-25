@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrackingController;
 
 
 
@@ -81,11 +82,19 @@ Route::post('filter_by_date', [OrderController::class, 'filter_by_date']);
 Route::get('detail_order/{id}', [OrderController::class, 'detail']);
 Route::get('dashboard', [OrderController::class, 'dashboard']);
 Route::get('complete/{id}', [OrderController::class, 'complete']);
+
+Route::get('traking/user', [TrackingController::class, 'user']);
+Route::get('detail_user/{ip}', [TrackingController::class, 'detail_user']);
+Route::get('traking/product', [TrackingController::class, 'product']);
+Route::get('traking/blog', [TrackingController::class, 'blog']);
+Route::get('traking_detail_page/{id}', [TrackingController::class, 'traking_detail_page']);
+Route::get('tracking_detail_product/{id}', [TrackingController::class, 'tracking_detail_product']);
+Route::get('tracking_detail_blog/{id}', [TrackingController::class, 'tracking_detail_blog']);
 });
 
+Route::post('tracking_page', [TrackingController::class, 'tracking_page']);
 
 Route::group(['middleware' => ['auth']], function() 
 {
-
 
 });
