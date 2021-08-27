@@ -34,7 +34,7 @@
          </tr>
         </thead>
         <tbody>
-           @foreach($category as $cgr)
+           @foreach($categoryad as $cgr)
           <tr data-expanded="true">
             <td>{{$cgr->category_name}}</td>
             <td>@if($cgr->category_parent==0){{'Category parent'}} @else {{$cgr->category->category_name}} @endif</td>

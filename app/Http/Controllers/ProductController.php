@@ -74,6 +74,7 @@ class ProductController extends Controller
         if(isset($request->product_sale))
         $Product->product_sale = $request->product_sale;
         $Product->created_at = Carbon::now('Asia/Ho_Chi_Minh');
+        $Product->product_view=0;
 
         $get_image = $request->product_image;
         $path = 'image/product/';

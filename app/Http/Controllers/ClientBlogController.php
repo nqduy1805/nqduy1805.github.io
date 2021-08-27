@@ -16,9 +16,9 @@ class ClientBlogController extends Controller
 {
  public function index($id)
  {
-         $blog = Blog::where('category_id',$id)->get();
+        $blog = Blog::where('category_id',$id)->get();
         $best_seller=Order_details::groupBy('product_id')->orderBy('order_qty','ASC')->limit(3)->get();
-         $blog_popular = Blog::where('category_id',$id)->orderBy('blog_view','DESC')->limit(3)->get();
+        $blog_popular = Blog::where('category_id',$id)->orderBy('blog_view','DESC')->limit(3)->get();
         return view('pages.all_blog')->with(get_defined_vars());
     }
       
@@ -27,6 +27,8 @@ class ClientBlogController extends Controller
         $blog=Blog::find($id);
         $blog->blog_view=$blog->blog_view+1;
          $blog->save();
+        $best_seller=Order_details::orderBy('product_view','DESC')->limit(3)->get();
+        $blog_popular = Blog::orderBy('blog_view','DESC')->limit(3)->get();
         return view('pages.detail_blog')->with(get_defined_vars());
     }
       public function load_comment(Request $request)

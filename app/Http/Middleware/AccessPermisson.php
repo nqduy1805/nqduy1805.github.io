@@ -22,6 +22,6 @@ class AccessPermisson
         if( Auth::user()&&str_contains('admin', Auth::user()->role)){
             return $next($request);
         }
-        return redirect('login');  
+        return redirect('home');  
           }
 }

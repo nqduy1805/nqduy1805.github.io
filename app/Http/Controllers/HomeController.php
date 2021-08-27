@@ -35,13 +35,14 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {   
-        $product = Product::orderBy('updated_at','desc')->limit(8)->get();  
-        return view('pages.home')->with(get_defined_vars());
-    }
-    public function access(Request $request)
-    {
-      
-             return redirect('home');
+       if(isset(Auth::user()->id)&&Auth::user()->role=="admin")
+       {
+               return redirect('admin');
+       }
+        else{
+                  $product = Product::orderBy('updated_at','desc')->limit(8)->get();  
+        return view('pages.home')->with(get_defined_vars());  
+        }
     }
     public function detail_product($id)
     {

@@ -3,7 +3,7 @@
 <div class="table-agile-info">
  <div class="panel panel-default">
     <div class="panel-heading">
-      User Table
+      Detail Table
     </div>
     <div>
          @if (session('status'))

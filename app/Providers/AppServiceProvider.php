@@ -14,6 +14,9 @@ use App\Models\Comment;
 use App\Models\Usertraking;
 use Carbon\Carbon;
 use App\Models\Pagetracking;
+use App\Models\Blog;
+use App\Models\Lovelist;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -74,19 +77,28 @@ class AppServiceProvider extends ServiceProvider
                    
                     } 
                     Cart::destroy();   
-                     }             
-                }   
+                     }  
+                    $lovelist1=Lovelist::where('user_id',session('tracking_id'))->get();
+                     if($lovelist1)
+                     {
+                        foreach($lovelist1 as $lo)
+                            {$lo->user_id=Auth::user()->id;
+                                $lo->save();}
+                     }     
+                }  
+
             $discount=0;
                  if(isset(Auth::user()->id)){
         $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
         $cart=Order_details::where('order_id',$draft->id)->get();
-                  $total=(float)Order_details::where('order_id',$draft->id)->get()->sum('order_subtotal');
-         }
-            else{
+        $total=(float)Order_details::where('order_id',$draft->id)->get()->sum('order_subtotal');
+        $lovelist=Lovelist::where('user_id',Auth::user()->id)->get();
+         } else{
                  $cart=Cart::content();
                 $total=Cart::subtotal();
                 $total=str_replace(',','',$total);
                  $total=(float)$total;
+                 $lovelist=Lovelist::where('user_id',session('id_traking'))->get();
             }
             if(session('coupon.coupon_type')=='percent')
             {
@@ -100,12 +112,15 @@ class AppServiceProvider extends ServiceProvider
           $ip_adress=\Request::ip();
           $datenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H d-m-Y');
           $date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+
           if(session('id_traking')==null)
           {$usertraking=new Usertraking();
            $usertraking->ip_adress=$ip_adress;
            $usertraking->date_visit=$datenow;
            $usertraking->date=$date;
            $usertraking->time=0;
+           $usertraking->mail_times=0;
+           $usertraking->phone_times=0;
 
            $ip_adress='14.233.178.189';
            $url='https://ipinfo.io/'.$ip_adress;
@@ -121,7 +136,6 @@ class AppServiceProvider extends ServiceProvider
            $usertraking->save();
            session()->put('id_traking',$usertraking->id);
        }
-
             if(session('id_traking')!=null)
             {
             $timenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H');
@@ -159,7 +173,11 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
             }
-            $view->with('category',$category)->with('total',$total)->with('cart',$cart)->with('discount',$discount);
+                    $popular_product=Product::orderBy('product_view','DESC')->limit(20)->get();
+                 $new_blog=Blog::orderBy('created_at','DESC')->limit(2)->get();
+
+
+            $view->with('category',$category)->with('total',$total)->with('cart',$cart)->with('discount',$discount)->with('popular_product',$popular_product)->with('new_blog',$new_blog)->with('lovelist',$lovelist);
         });
     }
 }

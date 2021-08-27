@@ -15,10 +15,8 @@
 			<!-- CONTAINER -->
 			<div class="container">
 				<h2>NEW PRODUCT</h2>
-
 				<!-- ROW -->
 				<div class="row">
-					
 					<!-- TOVAR WRAPPER -->
 					<div class="tovar_wrapper" data-appear-top-offset='-100' data-animated='fadeInUp'>
 						@foreach($product as $pr)
@@ -32,8 +30,8 @@
 									</div>
 									<div class="tovar_item_btns">
 										<div class="open-project-link"><a class="quickview open-project tovar_view" href="javascript:void(0);" data-product_id="{{$pr->id}}" >QUICK VIEW</a></div>
-										<a class="add_bag" href="javascript:void(0);"  ><i class="fa fa-shopping-cart"></i></a>
-										<a class="add_lovelist" href="javascript:void(0);" ><i class="fa fa-heart"></i></a>
+										
+										<a class="add_lovelist" href="{{'add_lovelist/'.$pr->id}}" ><i class="fa fa-heart"></i></a>
 									</div>
 								</div>
 								<div class="tovar_description clearfix">

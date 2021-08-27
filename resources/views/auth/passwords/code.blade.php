@@ -14,10 +14,10 @@
                                     </span>
       @enderror
 
-        <form action="{{URL::to('send_code')}}" method="get">
-            @csrf
-            <input id="email"  type="email" class="ggg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="EMAIL" required autocomplete="email" autofocus>
+        <form action="{{URL::to('new_password')}}" method="get">
+            @csrf 
+            <input id="code"   class="ggg @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" placeholder="CODE" required autocomplete="code" autofocus>
                 <div class="clearfix"></div>
-                <input type="submit" value="Send Password Reset Link" name="login">
+                <input type="submit" value="Send code">
         </form>
 @endsection

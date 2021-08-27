@@ -54,7 +54,7 @@
 											<li class="variation-Size">Size: <span>{{$c->order_size}}</span></li>
 										</ul>
 									</td>
-	               <td ><a class=" saled_price" >$</a><span class=" saled_price product-price ">{{$c->order_sale}}</span>    $<span class="product-price sale_price">{{$c->order_price}}</span></td>						
+	               <td ><a >$</a><span class=" saled_price product-price ">{{$c->order_sale}}</span>    $<span class="product-price- sale_price">{{$c->order_price}}</span></td>						
 	               			<td class="product-quantity">
 										<div class="tovar_size_select">
                      <div class="clearfix">
@@ -86,7 +86,7 @@
 											<li class="variation-Size">Size: <span>{{$c->options->size}}</span></li>
 										</ul>
 									</td>
-									<td ><a class=" saled_price" >$</a><span class=" saled_price product-price ">{{$c->price}}</span>    $<span class="product-price sale_price">{{$c->weight}}</span></td>
+									<td ><a class="do">$</a><span class=" saled_price product-price ">{{$c->price}}</span>    $<span class="product-price sale_price">{{$c->weight}}</span></td>
 									<td class="product-quantity">
 										<div class="tovar_size_select">
                      <div class="clearfix">
@@ -160,12 +160,13 @@
            $('.input-qty').on('input',function(){
               var $quantity=$(this).val();
               var $parent=$(this).parents('tr');
-              var $price=$parent.find('.product-price').text();
+              var $price=$parent.find('.saled_price').text();
               var $total_price=$parent.find('.product-subtotal');
               var $id=$parent.find('#idcart').val();
               var $token=$parent.find('#signup-token').val();
-              var $subtotal=($quantity*$price).toFixed(2);
+              var $subtotal=($quantity*Number($price)).toFixed(2);
               var $total_cart=$('.total_cart').text();
+              var $discount=$('.total_cart3').text();
               $total_cart=(Number($total_cart)+$quantity*$price-Number($total_price.text())).toFixed(2);
              $.ajax({
              url:"update_bag",
@@ -174,7 +175,7 @@
                            success:function(data){
                     $total_price.text($subtotal);
                    $('.total_cart').text($total_cart);
-                    $('.total_cart1').text($total_cart);
+                    $('.total_cart1').text(($total_cart-$discount).toFixed(2));
                       }}) })
            </script>
 		@endsection

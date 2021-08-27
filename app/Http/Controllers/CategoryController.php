@@ -16,7 +16,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        $category = Category::paginate(5);
+    {        $categoryad = Category::paginate(5);
         return view('admin.category.index')->with(get_defined_vars());
     }
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-         $category = Category::get();
+         $categoryad = Category::get();
         return view('admin.category.create')->with(get_defined_vars());
     }
     /**
@@ -72,9 +72,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        $categoryad = Category::find($id);
         $category_parent = Category::get();
-        return view('admin.category.edit')->with(compact('category','category_parent'));
+        return view('admin.category.edit')->with(compact('categoryad','category_parent'));
     }
 
     /**
@@ -110,8 +110,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         
-        $category = Category::find($id);
-        $category->delete();
+        $categoryad = Category::find($id);
+        $categoryad->delete();
         return redirect()->back()->with('status','delete success');
     }
 }

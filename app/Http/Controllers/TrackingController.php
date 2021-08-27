@@ -30,18 +30,25 @@ class TrackingController extends Controller
     }
         return 'thanhcong';
     }
+     
     public function user()
     {
-        $usertraking = Usertraking::select('ip_adress','country','city','region')->OrderBy('updated_at','DESC')->groupBy('ip_adress')->get();
+        $usertraking = Usertraking::select('ip_adress','country','city','region', DB::raw('count(*) as total'))->OrderBy('updated_at','DESC')->groupBy('ip_adress')->get();
+        foreach($usertraking as $u){
+            $u->count=(Usertraking::where('ip_adress',$u->ip_adress)->Count())->count();
+            $u->phone_times=Usertraking::where('ip_adress',$u->ip_adress)->sum('phone_times');
+            $u->mail_times=Usertraking::where('ip_adress',$u->ip_adress)->sum('mail_times');
+
+        }
       return view('admin.tracking.user')->with(get_defined_vars());      }
       public function detail_user(Request $request,$ip)
     {
-        $usertraking = Usertraking::where('ip_adress',$ip)->OrderBy('updated_at','DESC')->get();
+        $usertraking = Usertraking::where('ip_adress',$ip)->OrderBy('updated_at','DESC')->paginate(5);
       return view('admin.tracking.detail_user')->with(get_defined_vars());      }
         public function traking_detail_page(Request $request,$id)
     {
         
-     $pagetraking = Pagetracking::where('tracking_id',$id)->OrderBy('updated_at','DESC')->get();
+     $pagetraking = Pagetracking::where('tracking_id',$id)->OrderBy('updated_at','DESC')->paginate(5);
       return view('admin.tracking.detail_page')->with(get_defined_vars());    }
        public function product()
     { 
@@ -64,4 +71,16 @@ class TrackingController extends Controller
     {
         $blog = Blog::OrderBy('product_view','DESC')->paginate(5);
       return view('admin.tracking.blog')->with(get_defined_vars());      }
+
+       public function tracking_pm(Request $request)
+        {        $usertraking = Usertraking::where('_id',session('id_traking'))->first();
+       if($request->pm=='mail')
+       {
+          $usertraking->mail_times=$usertraking->mail_times+1;
+          $usertraking->save();
+       }
+       else{
+                  $usertraking->phone_times=$usertraking->phone_times+1;
+                            $usertraking->save();       }
+    }
 }

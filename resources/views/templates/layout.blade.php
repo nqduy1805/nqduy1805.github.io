@@ -4,7 +4,7 @@
 <head>
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<meta charset="utf-8">
-	<title>Glammy | Modern eCommerce html Template </title>
+	<title>Glammy| </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -84,6 +84,7 @@
 						</form>
 					</div><!-- SEARCH FORM -->
 					
+
 					
 					<!-- SHOPPING BAG -->
                       @if(isset(Auth::user()->id))
@@ -92,7 +93,7 @@
 						<a class="shopping_bag_btn" href="javascript:void(0);" ><i class="fa fa-shopping-cart"></i><p>Shopping bag</p><span>{{$cart->count()}}</span></a>
 						<div class="cart">
 							<ul class="cart-items">
-                             <?php foreach($cart as $cr){ ?>
+                             <?php $i=0; foreach($cart as $cr){ ?>
 								<li class="clearfix">
 									<img class="cart_item_product" src="{{asset('image/product/'.$cr->product->product_image)}}" alt="" />
 									<a href="product-page.html" class="cart_item_title">{{$cr->product->product_name}}</a>
@@ -103,7 +104,7 @@
                                     <form id="product-remove1" action="{{URL::to('delete_bag/'.$cr->id)}}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                  <?php  } ?>
+                                  <?php  $i++; if($i>1) break; } ?>
 
 							</ul>
 							<div class="cart_total">
@@ -116,7 +117,7 @@
 					<div class="shopping_bag">
 						<a class="shopping_bag_btn" href="javascript:void(0);" ><i class="fa fa-shopping-cart"></i><p>Shopping bag</p><span>{{Cart::count()}}</span></a>
 						<div class="cart">
-							<ul class="cart-items">
+							<ul class="cart-items cart_list">
                             @foreach($cart as $cr)
 								<li class="clearfix">
 									<img class="cart_item_product" src="{{asset('image/product/'.$cr->options->image)}}" alt="" />
@@ -140,20 +141,26 @@
 
 					<!-- LOVE LIST -->
 					<div class="love_list">
-						<a class="love_list_btn" href="javascript:void(0);" ><i class="fa fa-heart-o"></i><p>Love list</p><span>0</span></a>
+						<a class="love_list_btn" href="javascript:void(0);" ><i class="fa fa-heart-o"></i><p>Love list</p><span>{{$lovelist->count()}}</span></a>
 						<div class="cart">
-							<ul class="cart-items">
-								<li>Cart is empty</li>
-							</ul>
-							<div class="cart_total">
-								<div class="clearfix"><span class="cart_subtotal">bag subtotal: <b>$0</b></span></div>
-								<a class="btn active" href="checkout.html">Checkout</a>
-							</div>
+							<ul class="cart-items love_li">
+                                   @foreach($lovelist as $lo)
+								<li class="clearfix">
+									<img class="cart_item_product" src="{{asset('image/product/'.$lo->product->product_image)}}" alt="" />
+									<a href="product-page.html" class="cart_item_title">{{$lo->product->name}}</a>
+									<a href="javascript:void(0);" onclick="event.preventDefault();
+                                       document.getElementById('product-remove2').submit();" ><span>Delete</span> <i>X</i></a>
+								</li>
+                                    <form id="product-remove2" action="{{URL::to('delete_lovelist/'.$lo->id)}}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                  @endforeach							</ul>
+
 						</div>
 					</div><!-- //LOVE LIST -->
 
 					<!-- MENU -->
-					<ul class="navmenu center">
+					<ul class="navmenu center ">
 						<li class="sub-menu first"><a href="{{URl::to('home')}}" >Home</a>
 						</li>
 						@foreach($category as $cgr)
@@ -194,31 +201,29 @@
 			<div class="container">
 				
 				<!-- ROW -->
-				<div class="row">
-										<div class="banner_wrapper" data-appear-top-offset='-100' data-animated='fadeInUp'>
+				<div class="row shop_block" height="10">
+						<div class="banner_wrapper " data-appear-top-offset='-100' data-animated='fadeInUp'>
 
 					<!-- BANNER WRAPPER -->
 						<!-- BANNER -->
-						<div class="col-lg-9 col-md-9">
-							<a class="banner type4 margbot40" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/bn3.jpg')}}" alt="" /></a>
+						<div class="col-lg-9 col-md-9 ">
+							<a class="banner type4 margbot40" href="javascript:void(0);" ><img  src="{{asset('frontend/images/tovar/bn3.jpg')}}" alt="" /></a>
 						</div><!-- //BANNER -->
-						
 						<!-- BANNER -->
 						<div class="col-lg-3 col-md-3">
-							<a class="banner nobord margbot40" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/bn2.png')}}" alt="" /></a>
+							<a class="banner nobord margbot40" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/baer1.jpg')}}" alt="" /></a>
 						</div><!-- //BANNER -->
 					</div><!-- //BANNER WRAPPER -->
 				</div><!-- //ROW -->
 			</div><!-- //CONTAINER -->
 		</section><!-- //BANNER SECTION -->
-		
-		
+
 		<!-- NEW ARRIVALS -->
 		<section class="new_arrivals padbot50">
 			
 			<!-- CONTAINER -->
 			<div class="container">
-				<h2>TÚI XÁCH</h2>
+				<h2>POPULAR PRODUCT</h2>
 				
 				<!-- JCAROUSEL -->
 				<div class="jcarousel-wrapper">
@@ -231,147 +236,47 @@
 					
 					<div class="jcarousel" data-appear-top-offset='-100' data-animated='fadeInUp'>
 						<ul>
+							@foreach($popular_product as $pp_pr)
 							<li>
 								<!-- TOVAR -->
 								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/den_txn419_8_7bb54f17965241bb86d23c3bf7c7bea1_grande.jpg')}}" alt="" />
-										<div class="open-project-link"><a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >Xem</a></div>
+									<div class="tovar_img tovar_sale_{{$pp_pr->product_sale}}">
+										<img src="{{asset('image/product/'.$pp_pr->product_image)}}" alt="" />
+										<div class="open-project-link"><a class="quickview open-project tovar_view" href="javascript:void(0);" data-product_id="{{$pp_pr->id}}"  ><span>quick</span> view</a></div>
 									</div>
 									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >Moonglow paisley silk tee</a>
-										<span class="tovar_price">$98.00</span>
+										<a class="tovar_title" href="{{asset('detail_prodcut'.$pp_pr->id)}}" >{{$pp_pr->product_name}}</a>
+										<span class="tovar_price sale_price">${{$pp_pr->product_price}}</span>
+										<span class="tovar_price saled_price " >${{$pp_pr->product_price*(100-$pp_pr->product_sale)/100}}</span>
 									</div>
 								</div><!-- //TOVAR -->
 							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/den_txn419_8_7bb54f17965241bb86d23c3bf7c7bea1_grande.jpg')}}" alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >PEASANT TOP IN SUCKERED STRIPE</a>
-										<span class="tovar_price">$78.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/nau_txn430_7_1389338b7d1f4540b471b9c5ed6e6822_grande.jpg')}}" alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >EMBROIDERED BIB PEASANT TOP</a>
-										<span class="tovar_price">$88.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/den_txn444_8_95ca7d0d02fe4c659718961e0c5b45f9_grande.jpg')}}" alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >SILK POCKET BLOUSE</a>
-										<span class="tovar_price">$98.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/kem_txn464_7_41a236ed47f941ec97438e85e0cefedd_grande.jpg')}}" alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >SWISS-DOT TUXEDO SHIRT</a>
-										<span class="tovar_price">$65.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/kem_txn435_7_63692dd4847249b69e77f766255f2940_grande.jpg')}}" alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >STRETCH PERFECT SHIRT</a>
-										<span class="tovar_price">$72.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/den_txn419_8_7bb54f17965241bb86d23c3bf7c7bea1_grande.jpg')}}" alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >Moonglow paisley silk tee</a>
-										<span class="tovar_price">$98.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/kem_txn427_7_0ce7d15a1fee4a1e8cd89ed68ebf84ba_grande.jpg')}}"alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >PEASANT TOP IN SUCKERED STRIPE</a>
-										<span class="tovar_price">$78.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-								<!-- TOVAR -->
-								<div class="tovar_item_new">
-									<div class="tovar_img">
-										<img src="{{asset('frontend/images/product/kem_txn473_7_4de7731b80f443318945221f622fe995_grande.jpg')}}" alt="" />
-										<div class="open-project-link">
-											<a class="open-project tovar_view" href="javascript:void(0);" data-url="!projects/women/1.html" >quick view</a>
-										</div>
-									</div>
-									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="product-page.html" >EMBROIDERED BIB PEASANT TOP</a>
-										<span class="tovar_price">$88.00</span>
-									</div>
-								</div><!-- //TOVAR -->
-							</li>
-							<li>
-							</li>
+							@endforeach
 						</ul>
 					</div>
 				</div><!-- //JCAROUSEL -->
 			</div><!-- //CONTAINER -->
 		</section><!-- //NEW ARRIVALS -->
-		
+		<!-- //NEW blog -->
+<section class="recent_posts padbot40">
+			
+			<!-- CONTAINER -->
+			<div class="container">
+				<h2>NEW BLOG</h2>
+				<!-- ROW -->
+				<div class="row " data-appear-top-offset="-100" data-animated="fadeInUp">
+									@foreach($new_blog as $nbl)
+						 					<div class="col-lg-6 col-xs-6 padbot30">
+						<div class="recent_post_item clearfix">
+							<div class="recent_post_date">{{$nbl->created_at->format('d')}}<span>{{$nbl->created_at->format('M')}}</span></div>
+							<a class="recent_post_img recent_post_img1" href="{{URL::to('detail_blog/'.$nbl->id)}}"><img src="{{asset('image/blog/'.$nbl->blog_image)}}" alt=""></a>
+						</div>
+					</div>
+					@endforeach
+					
+					</div>
+				</div><!-- //ROW -->
+			</section>
 
 
 		<!-- FOOTER -->
@@ -394,12 +299,12 @@
 					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-ss-12 padbot30">
 						<h4>Information</h4>
 						<ul class="foot_menu">
-							<li><a href="about.html" >About us</a></li>
+							<li><a href="{{URL::to('Contacts')}}" >About us</a></li>
 							<li><a href="javascript:void(0);" >Delivery</a></li>
 							<li><a href="javascript:void(0);" >Privacy police</a></li>
-							<li><a href="blog.html" >Blog</a></li>
+							<li><a href="{{URL::to('all_blog')}}" >Blog</a></li>
 							<li><a href="faq.html" >Faqs</a></li>
-							<li><a href="contacts.html" >Countact us</a></li>
+							<li><a href="{{URL::to('Contacts')}}" >Countact us</a></li>
 						</ul>
 					</div>
 					
@@ -413,7 +318,8 @@
 					
 					<div class="col-lg-4 col-md-4 padbot30">
 						<h4>Newsletter</h4>
-						<form class="newsletter_form clearfix" action="javascript:void(0);" method="get">
+						<form class="newsletter_form clearfix" action="{{URL::to('send_coupon')}}" method="post">
+							@csrf
 							<input type="text" name="newsletter" value="Enter E-mail & Get 10% off" onFocus="if (this.value == 'Enter E-mail & Get 10% off') this.value = '';" onBlur="if (this.value == '') this.value = 'Enter E-mail & Get 10% off';" />
 							<input class="btn newsletter_btn" type="submit" value="SIGN UP">
 						</form>
@@ -437,7 +343,6 @@
 				<!-- CONTAINER -->
 				<div class="container clearfix">
 					<div class="foot_logo"><a href="index.html" ><img src="{{asset('frontend/images/foot_logo.png')	}}" alt="" /></a></div>
-					
 					<div class="copyright_inf">
 						<span>Glammy Shop© 2014</span> |
 						<span>Theme by Anna Balashova</span> |
@@ -520,7 +425,7 @@
 </div>
    <!-- TOVAR MODAL CONTENT -->
      {{session()->put('page',substr(URL::current(),31));}}
-                     <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+          <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
 <script type="text/javascript">
 	$('.quickview').click(function(){
 		var product_id=$(this).data('product_id');
@@ -569,7 +474,44 @@
                       }
                   });
 	   }
+	    function times_click(pm){
+  var $token=$('#signup-token').val();
+       $.ajax({
+             url:"{{URL::to('tracking_pm')}}",
+             method:"POST",
+             data:{pm:pm,_token:$token}, 
+                           success:function(data){
+                      }
+                  });	   }
+	$('.foot_phone').click(function(){   
+		times_click('phone');
+      })
+	$('.phone_top').click(function(){   
+		times_click('phone');
+      })
+	$('.foot_mail').click(function(){   
+		times_click('mail');
+      })
+
 	});
+
+    
 </script>
+<style type="text/css">
+	.cart_list {
+   height: @if($cart->count()==0){{'10'}} @elseif($cart->count()==1) {{'200'}} @else {{'250'}}px @endif;
+  overflow-y: auto;
+  scroll-snap-type: y;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+.love_li{
+	height: @if($lovelist->count()==0){{'10'}} @elseif($lovelist->count()==1) {{'200'}} @else {{'250'}}px @endif;
+  overflow-y: auto;
+  scroll-snap-type: y;
+}
+
+</style>
 </body>
 </html>

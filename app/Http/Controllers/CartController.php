@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Order_details;
 use App\Models\Coupon;
+use App\Models\Lovelist;
 use Carbon\Carbon;
 use Cart;
 use session;
@@ -100,5 +101,31 @@ class CartController extends Controller
         session()->put('coupon',$coupon);
         }
         return view('pages.shopping_bag')->with(get_defined_vars());
+    }
+    
+     public function add_lovelist($id)
+    {
+        if(isset(Auth::user()->id)){
+            $ttlovelist=Lovelist::where('product_id',$id)->where('user_id',Auth::user()->id)->get();
+            if($ttlovelist->count()==0){
+                  $lovelist=new Lovelist();
+        $lovelist->product_id=$id;
+        $lovelist->user_id=Auth::user()->id;
+        $lovelist->save();}}      
+         else{
+         $ttlovelist=Lovelist::where('product_id',$id)->where('user_id',session('id_traking'))->get();
+            if($ttlovelist->count()==0){
+        $lovelist=new Lovelist();
+        $lovelist->product_id=$id;
+        $lovelist->user_id=session('id_traking');
+        $lovelist->save();}}
+        return redirect()->back();
+    }
+     public function delete_lovelist(Request $request,$id)
+    {
+        $lovelist=Lovelist::find($id);
+         $lovelist->delete();
+        return redirect()->back();
+
     }
 }

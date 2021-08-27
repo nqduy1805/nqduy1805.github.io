@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Mail;
 class RegisterController extends Controller
 {
     /*
@@ -66,6 +66,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+             $to_name="Shop thoi trang";
+        $to_email=$data['email'];
+        $data1= array("email"=>$data['email'],"phone"=>$data['phone'],"name"=>$data['name'],"password"=>$data['password'],"adress"=>$data['adress']);
+         Mail::send('pages.mail.send_mail_register',$data1,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('Customer contacts');
+            $message->from($to_email,$to_name);
+        });
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

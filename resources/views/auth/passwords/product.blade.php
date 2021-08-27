@@ -3,7 +3,7 @@
 <div class="table-agile-info">
  <div class="panel panel-default">
     <div class="panel-heading">
-      User Table
+      Order Table
     </div>
     <div>
          @if (session('status'))
@@ -23,29 +23,29 @@
         }}">
         <thead>
           <tr>
-            <th data-breakpoints="xs">Ip</th>
+            <th data-breakpoints="xs">Name</th>
             <th data-breakpoints="xs">Country</th>
-            <th data-breakpoints="xs">Region</th>
             <th data-breakpoints="xs">City</th>
-            <th data-breakpoints="xs">Access number</th>
-            <th data-breakpoints="xs">Mail click</th>
-            <th data-breakpoints="xs">Mail phone</th>
-            <th data-breakpoints="xs"></th>
+            <th data-breakpoints="xs">Province</th>
+            <th data-breakpoints="xs">Phone</th>
+            <th data-breakpoints="xs">Email</th>
+            <th data-breakpoints="xs">Total</th>
+            <th data-breakpoints="xs">Status</th>
          </tr>
         </thead>
         <tbody>
-           @foreach($usertraking as $us)
+           @foreach($order as $od)
           <tr data-expanded="true">
-            <td>{{$us->ip_adress}}</td>
-            <td>{{$us->country}}</td>
-            <td>{{$us->region}}</td>
-            <td>{{$us->city}}</td>
-            <td>{{$us->count}}</td>
-            <td>{{$us->phone_times}}</td>      
-            <td>{{$us->mail_times}}</td>
-
+            <td>{{$od->name}}</td>
+            <td>{{$od->country}}</td>
+            <td>{{$od->city}}</td>
+            <td>{{$od->Province}}</td>
+            <td>{{$od->phone}}</td>
+            <td>{{$od->email}}</td>
+            <td>${{$od->order_total}}</td>
+            <td>{{$od->order_status}}</td>
             <td>
-            <form action="{{URL::to('detail_user/'.$us->ip_adress)}}" method="GET">
+            <form action="{{URL::to('detail_order/'.$od->id)}}" method="GET">
                                 @csrf
              <button onclick="" class="btn btn-primary ">Detail</button> 
             </form>      

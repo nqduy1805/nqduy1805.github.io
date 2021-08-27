@@ -125,7 +125,6 @@
 										</div>
 										<div class="tovar_item_btns">
 											<div class="open-project-link"><a class="quickview open-project tovar_view" href="javascript:void(0);" data-product_id="{{$pr->id}}"  ><span>quick</span> view</a></div>
-											<a class="add_bag" href="javascript:void(0);" ><i class="fa fa-shopping-cart"></i></a>
 											<a class="add_lovelist" href="javascript:void(0);" ><i class="fa fa-heart"></i></a>
 										</div>
 									</div>
@@ -142,6 +141,7 @@
 						</div><!-- //ROW -->
 						
 						<hr>
+						@if($product->count()>0)
 						<div class="clearfix">
 							<!-- PAGINATION -->
 							<ul class="pagination">
@@ -159,7 +159,10 @@
 							<a class="show_all_tovar" href="javascript:void(0);" >show all</a>
 							
 						</div>
-						
+						<!-- //PAGINATION -->
+						@else
+						<p>NO PRODUCT FOUND</p>
+						@endif
 						<hr>
 						
 						<div class="padbot60 services_section_description">
@@ -180,5 +183,4 @@
   document.getElementById("form_filter").submit();}
 	$(function() {$( "#slider-range" ).slider({ range: true, min: 0, max: 2000, values: [<?php if(isset($_GET['amount_price'])){ $amount_price=$_GET['amount_price'];$amount_price=str_replace('$', '', $amount_price); $amount_price=str_replace('-', ',', $amount_price);echo $amount_price;} else echo '0,2000'?>], slide: function( event, ui ) { $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] ); } }); $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) ); });
 </script>
-@endsection
-		
+@endsection	

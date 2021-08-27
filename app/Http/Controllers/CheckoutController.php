@@ -13,6 +13,7 @@ use Cart;
 use session;
 use Auth;
 use DB;
+use Mail;
 
 class CheckoutController extends Controller
 {
@@ -103,7 +104,25 @@ class CheckoutController extends Controller
         $order->order_total = $total-$discount;
         $order->discount =-$discount;
         $order->save(); 
+        //mail customer
+        $order_detail = Order_details::where('order_id',session('order_id'))->get();
+        $to_name="Shop thoi trang";
+        $to_email=$order->email;
+        $data= array('order'=>$order,'order_details'=>$order_detail);
+         Mail::send('pages.mail.send_mail_order',$data,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('Customer contacts');
+            $message->from($to_email,$to_name);
+        });
+        //mail admin
+        $to_name="Shop thoi trang";
+        $to_email="tnu1805@gmail.com";
+        $data= array('order'=>$order,'order_details'=>$order_detail);
+         Mail::send('pages.mail.send_mail_order_ad',$data,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('Customer contacts');
+            $message->from($to_email,$to_name);
+        });
         session()->forget('order_id');
+
         return redirect('shopping_bag');
     }
 }

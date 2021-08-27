@@ -14,6 +14,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrackingController;
+use App\Http\Controllers\MailController;
 
 
 
@@ -34,7 +35,6 @@ use App\Http\Controllers\TrackingController;
 //});
 
 Auth::routes();
-Route::get('shopthoitrang', [HomeController::class, 'access']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('home', [HomeController::class, 'index']);
 Route::get('detail_product/{id}', [HomeController::class, 'detail_product']);
@@ -45,9 +45,11 @@ Route::post('load_comment', [HomeController::class, 'load_comment']);
 
 Route::get('sale', [HomeController::class, 'sale']);
 
-
 Route::get('search', [SearchController::class, 'search_product']);
 Route::get('filter', [SearchController::class, 'filter']);
+
+Route::get('add_lovelist/{id}', [CartController::class, 'add_lovelist']);
+Route::post('delete_lovelist/{id}', [CartController::class, 'delete_lovelist']);
 
 Route::get('shopping_bag', [CartController::class, 'shopping_bag']);
 Route::post('add_bag/{id}', [CartController::class, 'add_bag']);
@@ -59,6 +61,12 @@ Route::get('checkout3', [CheckoutController::class, 'checkout3']);
 Route::get('checkout4', [CheckoutController::class, 'checkout4']);
 Route::get('checkout5', [CheckoutController::class, 'checkout5']);
 
+Route::get('contacts', [MailController::class, 'contacts']);
+Route::post('send_contacts', [MailController::class, 'send_contacts']);
+Route::get('send_code', [MailController::class, 'send_code']);
+Route::get('new_password', [MailController::class, 'new_password']);
+Route::get('create_new_password', [MailController::class, 'create_new_password']);
+Route::post('send_coupon', [MailController::class, 'send_coupon']);
 
 
 Route::get('all_blog/{id}', [ClientBlogController::class, 'index']);
@@ -75,6 +83,7 @@ Route::resource('order',OrderController::class);
 Route::resource('user',UserController::class);
 Route::resource('coupon',CouponController::class);
 
+Route::get('admin', [OrderController::class, 'dashboard']);
 Route::get('dashboard', [OrderController::class, 'dashboard']);
 Route::post('dashboard_filter', [OrderController::class, 'dashboard_filter']);
 Route::post('chartthismonth', [OrderController::class, 'chartthismonth']);
@@ -93,6 +102,7 @@ Route::get('tracking_detail_blog/{id}', [TrackingController::class, 'tracking_de
 });
 
 Route::post('tracking_page', [TrackingController::class, 'tracking_page']);
+Route::post('tracking_pm', [TrackingController::class, 'tracking_pm']);
 
 Route::group(['middleware' => ['auth']], function() 
 {

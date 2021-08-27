@@ -24,28 +24,25 @@
         <thead>
           <tr>
             <th data-breakpoints="xs">Ip</th>
-            <th data-breakpoints="xs">Country</th>
-            <th data-breakpoints="xs">Region</th>
             <th data-breakpoints="xs">City</th>
+            <th data-breakpoints="xs">Region</th>
+            <th data-breakpoints="xs">Country</th>
             <th data-breakpoints="xs">Access number</th>
-            <th data-breakpoints="xs">Mail click</th>
-            <th data-breakpoints="xs">Mail phone</th>
+            <th data-breakpoints="xs">Status</th>
             <th data-breakpoints="xs"></th>
          </tr>
         </thead>
         <tbody>
-           @foreach($usertraking as $us)
+           @foreach($user as $us)
           <tr data-expanded="true">
-            <td>{{$us->ip_adress}}</td>
-            <td>{{$us->country}}</td>
-            <td>{{$us->region}}</td>
-            <td>{{$us->city}}</td>
-            <td>{{$us->count}}</td>
-            <td>{{$us->phone_times}}</td>      
-            <td>{{$us->mail_times}}</td>
-
+            <td>{{$us['ip']}}</td>
+            <td>{{$us['City']}}</td>
+            <td>{{$us['Region']}}</td>
+            <td>{{$us['Country']}}</td>
+            <td></td>
+            <td></td>
             <td>
-            <form action="{{URL::to('detail_user/'.$us->ip_adress)}}" method="GET">
+            <form action="{{URL::to('detail_order/'.$us->id)}}" method="GET">
                                 @csrf
              <button onclick="" class="btn btn-primary ">Detail</button> 
             </form>      

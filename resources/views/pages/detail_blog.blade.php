@@ -14,7 +14,7 @@
             <h3 class="pull-left"><b>Blog Post</b></h3>
             
             <div class="pull-right">
-               <a href="women.html" >Back to shop<i class="fa fa-angle-right"></i></a>
+               <a href="{{URL::to('HOME')}}" >Back to shop<i class="fa fa-angle-right"></i></a>
             </div>
          </div><!-- //CONTAINER -->
       </section><!-- //PAGE HEADER -->
@@ -73,8 +73,8 @@
                   
                   <!-- COMMENTS -->
                   <div id="comments" data-appear-top-offset='-100' data-animated='fadeInUp'>
-                     <h2>Comments (3)</h2>
-                     <ol id="comments1">
+                     <h2>Comments </h2>
+                     <ol id="comments1" class="cart-items">
                      </ol>
                   </div><!-- //COMMENTS -->
                   <!-- LEAVE A COMMENT -->
@@ -92,35 +92,8 @@
                      </div>
                   </div><!-- //LEAVE A COMMENT -->
             
-            
-
-                  <article class="post margbot40 clearfix" data-appear-top-offset='-100' data-animated='fadeInUp'>
-                     <a class="post_image pull-left" href="blog-post.html" >
-                        <div class="recent_post_date">24<span>feb</span></div>
-                        <img src="{{asset('frontend/images/blog/5.jpg')}}" alt="" />
-                     </a>
-                     <a class="post_title" href="blog-post.html" >DIY Beauty: The Best Use of Valentine's Day Roses</a>
-                     <div class="post_content">The beauty of self-hosted WordPress, is that you can build your site however you like, want to add forums to your website? Done. Want to add a ecommerce to your blog? Done. The beauty of self-hosted WordPress, is that you can build your site however you like, want to add forums to your website? Done. Want to add a ecommerce to your blog? Done.</div>
-                     <ul class="post_meta">
-                        <li><i class="fa fa-user"></i><a href="javascript:void(0);" >Anna Balashova</a></li>
-                        <li><i class="fa fa-comments"></i>Commetcs <span class="sep">|</span> 15</li>
-                        <li><i class="fa fa-eye"></i>views <span class="sep">|</span> 259</li>
-                     </ul>
-                  </article>
+                              
                   
-                  <article class="post margbot40 clearfix" data-appear-top-offset='-100' data-animated='fadeInUp'>
-                     <a class="post_image pull-left" href="blog-post.html" >
-                        <div class="recent_post_date">08<span>Oct</span></div>
-                        <img src="{{asset('frontend/images/blog/6.jpg')}}" alt="" />
-                     </a>
-                     <a class="post_title" href="blog-post.html" >Editor's Style: Dobrina Zhekova's Touch of Sparkle</a>
-                     <div class="post_content">The beauty of self-hosted WordPress, is that you can build your site however you like, want to add forums to your website? Done. Want to add a ecommerce to your blog? Done. The beauty of self-hosted WordPress, is that you can build your site however you like, want to add forums to your website? Done. Want to add a ecommerce to your blog? Done.</div>
-                     <ul class="post_meta">
-                        <li><i class="fa fa-user"></i><a href="javascript:void(0);" >Anna Balashova</a></li>
-                        <li><i class="fa fa-comments"></i>Commetcs <span class="sep">|</span> 15</li>
-                        <li><i class="fa fa-eye"></i>views <span class="sep">|</span> 259</li>
-                     </ul>
-                  </article>
                </div><!-- //BLOG LIST -->
                
                <!-- SIDEBAR -->
@@ -137,61 +110,35 @@
                   <div class="sidepanel widget_categories">
                      <h3>BLOG CATEGORIES</h3>
                      <ul>
-                        <li><a href="javascript:void(0);" >Sweaters</a></li>
-                        <li><a href="javascript:void(0);" >SHIRTS &amp; TOPS</a></li>
-                        <li><a href="javascript:void(0);" >KNITS &amp; TEES</a></li>
-                        <li><a href="javascript:void(0);" >PANTS</a></li>
-                        <li><a href="javascript:void(0);" >DENIM</a></li>
-                        <li><a href="javascript:void(0);" >DRESSES</a></li>
-                        <li><a href="javascript:void(0);" >Maternity</a></li>
+                        @foreach($category as $cg)
+                        @if($cg->category_parent!=0&&$cg->category->category_name=="BLOG")
+                        <li><a href="{{URL::to('all_blog/'.$cg->id)}}" >{{$cg->category_name}}</a></li>
+                        @endif
+                        @endforeach
                      </ul>
-                  </div><!-- //CATEGORIES -->
-                  
-                  <!-- NEWSLETTER FORM WIDGET -->
-                  <div class="sidepanel widget_newsletter">
-                     <div class="newsletter_wrapper">
-                        <h3>NEWSLETTER</h3>
-                        <form class="newsletter_form clearfix" action="javascript:void(0);" method="get">
-                           <input type="text" name="newsletter" value="Enter E-mail & Get 10% off" onFocus="if (this.value == 'Enter E-mail & Get 10% off') this.value = '';" onBlur="if (this.value == '') this.value = 'Enter E-mail & Get 10% off';" />
-                           <input class="btn newsletter_btn" type="submit" value="Sign up & get 10% off">
-                        </form>
-                     </div>
-                  </div><!-- //NEWSLETTER FORM WIDGET -->
-                  
+                  </div><!-- //CATEGORIES -->                  
                   <!-- WIDGET POPULAR POSTS -->
                   <div class="sidepanel widget_popular_posts">
                      <h3>POPULAR POSTS</h3>
                      <ul>
+                        @foreach($blog_popular as $pp_bl)
                         <li class="widget_popular_post_item clearfix">
-                           <a class="widget_popular_post_img" href="blog-post.html" ><img src="{{asset('frontend/images/blog/popular1.jpg')}}" alt="" /></a>
-                           <a class="widget_popular_post_title" href="blog-post.html" >New Fashion Vintage Double Breasted Trench Long</a>
-                           <span class="widget_popular_post_date">13 January 2014</span>
+                           <a class="widget_popular_post_img"  href="{{asset('detail_blog/'.$pp_bl->id)}}" ><img src="{{asset('image/blog/'.$pp_bl->blog_image)}}" alt="" /></a>
+                           <a class="widget_popular_post_title" href="{{asset('detail_blog/'.$pp_bl->id)}}">{{$pp_bl->blog_name}}</a>
+                           <span class="widget_popular_post_date">{{$pp_bl->created_at->format('d M Y')}}</span>
                         </li>
-                        <li class="widget_popular_post_item clearfix">
-                           <a class="widget_popular_post_img" href="blog-post.html" ><img src="{{asset('frontend/images/blog/popular2.jpg')}}" alt="" /></a>
-                           <a class="widget_popular_post_title" href="blog-post.html" >In the Kitchen with…The New Potato</a>
-                           <span class="widget_popular_post_date">10 January 2014</span>
-                        </li>
-                        <li class="widget_popular_post_item clearfix">
-                           <a class="widget_popular_post_img" href="blog-post.html" ><img src="{{asset('frontend/images/blog/popular3.jpg')}}" alt="" /></a>
-                           <a class="widget_popular_post_title" href="blog-post.html" >2013 Hot Women thicken fleece Warm Coat Lady</a>
-                           <span class="widget_popular_post_date">5 January 2014</span>
-                        </li>
+                        @endforeach
                      </ul>
                   </div><!-- //WIDGET POPULAR POSTS -->
                   
                   <!-- WIDGET POPULAR TAGS -->
                   <div class="sidepanel widget_tags">
                      <h3>Popular Tags</h3>
-                     
-                     <a href="javascript:void(0);" >DRESS</a>
-                     <a href="javascript:void(0);" >Sweaters</a>
-                     <a href="javascript:void(0);" >MATERNITY</a>
-                     <a href="javascript:void(0);" >SHIRTS & TOPS</a>
-                     <a href="javascript:void(0);" >BEAUTY</a>
-                     <a href="javascript:void(0);" >SHOP</a>
-                     <a href="javascript:void(0);" >Jackets & Blazers</a>
-                     <a href="javascript:void(0);" >Outerwear</a>
+                     @foreach($category as $cg)
+                        @if($cg->category_parent!=0&&$cg->category->category_name=="BLOG")
+                        <a href="{{URL::to('all_blog/'.$cg->id)}}" >{{$cg->category_name}}</a>
+                        @endif
+                        @endforeach
                   </div><!-- //WIDGET POPULAR TAGS -->
                   
                   <!-- WIDGET BEST SELLERS -->
@@ -199,29 +146,20 @@
                      <h3>BEST SELLERS</h3>
                      
                      <ul class="tovar_items_small">
+                        @foreach($best_seller as $b_sell)
                         <li class="clearfix">
-                           <img class="tovar_item_small_img" src="{{asset('frontend/images/tovar/women/1.jpg')}}" alt="" />
-                           <a href="product-page.html" class="tovar_item_small_title">Embroidered bib peasant top</a>
-                           <span class="tovar_item_small_price">$88.00</span>
+                           <img href='{{asset('detail_product/'.$b_sell->product_id)}}'" class="tovar_item_small_img" src="{{asset('image/product/'.$b_sell->product->product_image)}}" alt="" />
+                           <a href='{{asset('detail_product/'.$b_sell->product_id)}}'" class="tovar_item_small_title">{{$b_sell->product->product_name}}</a>
+                           <span class="tovar_item_small_price">${{$b_sell->product->product_price}}</span>
                         </li>
-                        <li class="clearfix">
-                           <img class="tovar_item_small_img" src="{{asset('frontend/images/tovar/women/2.jpg')}}" alt="" />
-                           <a href="product-page.html" class="tovar_item_small_title">Merino tippi sweater in geometric</a>
-                           <span class="tovar_item_small_price">$67.00</span>
-                        </li>
-                        <li class="clearfix">
-                           <img class="tovar_item_small_img" src="{{asset('frontend/images/tovar/women/3.jpg')}}" alt="" />
-                           <a href="product-page.html" class="tovar_item_small_title">Merino triple-stripe elbow-patch sweater</a>
-                           <span class="tovar_item_small_price">$94.00</span>
-                        </li>
+                        @endforeach
                      </ul>
                   </div><!-- //WIDGET BEST SELLERS -->
                   
                   <!-- BANNERS WIDGET -->
                   <div class="widget_banners">
-                     <a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/banner10.jpg')}}" alt="" /></a>
-                     <a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/banner9.jpg')}}" alt="" /></a>
-                     <a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/banner8.jpg')}}" alt="" /></a>
+                     <a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/bn1.jpg')}}" alt="" /></a>
+                     <a class="banner nobord margbot10" href="javascript:void(0);" ><img src="{{asset('frontend/images/tovar/bn1.jpg')}}" alt="" /></a>
                   </div><!-- //BANNERS WIDGET -->
                </div><!-- //SIDEBAR -->
             </div><!-- //ROW -->

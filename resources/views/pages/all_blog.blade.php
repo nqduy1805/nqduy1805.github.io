@@ -68,17 +68,28 @@
                   <hr>
                   
                   <!-- PAGINATION -->
-                  <ul class="pagination clearfix">
-                     <li><a href="javascript:void(0);" >1</a></li>
-                     <li><a href="javascript:void(0);" >2</a></li>
-                     <li class="active"><a href="javascript:void(0);" >3</a></li>
-                     <li><a href="javascript:void(0);" >4</a></li>
-                     <li><a href="javascript:void(0);" >5</a></li>
-                     <li><a href="javascript:void(0);" >6</a></li>
-                     <li><a href="javascript:void(0);" >...</a></li>
-                  </ul><!-- //PAGINATION -->
-               </div><!-- //BLOG LIST -->
-               <!-- SIDEBAR -->
+                  @if($blog->count()>0)
+                  <div class="clearfix">
+                     <!-- PAGINATION -->
+                     <ul class="pagination">
+                        <li><a href="javascript:void(0);" >...</a></li>
+                        <?php  if(isset($_GET['page'])&&$_GET['page']>4) 
+                               $page=$_GET['page'];
+                               else  
+                               $page=4;
+                          for($i=$page-3;$i<$page+4;$i++){ ?>
+                        <li class="{{Request::get('page')=="$i" ? "active":""}}"><a href="{{ request()->fullUrlWithQuery(['page' => "$i"]) }} " >{{$i}}</a></li>
+                        <?php  } ?>
+                           <li><a href="javascript:void(0);" >...</a></li>
+                     </ul><!-- //PAGINATION -->
+                     
+                     <a class="show_all_tovar" href="javascript:void(0);">show all</a>
+                     
+                  </div>
+                  <!-- //PAGINATION -->
+                  @else
+                  <p>NO BLOG FOUND</p>
+                  @endif
               
             </div><!-- //ROW -->
          </div><!-- //CONTAINER -->

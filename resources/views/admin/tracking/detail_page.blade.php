@@ -3,7 +3,7 @@
 <div class="table-agile-info">
  <div class="panel panel-default">
     <div class="panel-heading">
-      User Table
+      Tracking page Table
     </div>
     <div>
          @if (session('status'))
@@ -34,12 +34,7 @@
             <td>{{$us->page}}</td>
             <td>{{$us->time}}</td>
             <td>{{$us->times}}</td>
-            <td>
-            <form action="{{URL::to('traking_detail_page/'.$us->id)}}" method="GET">
-                                @csrf
-             <button onclick="" class="btn btn-primary ">Detail</button> 
-            </form>      
-            </td>
+
           </tr>
           @endforeach
 
