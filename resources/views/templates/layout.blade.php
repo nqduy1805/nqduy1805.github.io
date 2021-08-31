@@ -138,8 +138,8 @@
 						</div>
 					</div><!-- //SHOPPING BAG -->
 					@endif
-
-					<!-- LOVE LIST -->
+{{--                  [082126QD]Create lovelist--}}	
+  				<!-- LOVE LIST -->
 					<div class="love_list">
 						<a class="love_list_btn" href="javascript:void(0);" ><i class="fa fa-heart-o"></i><p>Love list</p><span>{{$lovelist->count()}}</span></a>
 						<div class="cart">
@@ -471,9 +471,11 @@
              method:"POST",
              data:{_token:$token}, 
                            success:function(data){
+                           	alert(data);
                       }
                   });
 	   }
+	     //[082123QD]how many click on CTA store: phone, email
 	    function times_click(pm){
   var $token=$('#signup-token').val();
        $.ajax({

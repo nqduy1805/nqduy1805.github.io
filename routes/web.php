@@ -15,6 +15,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\DriverController;
 
 
 
@@ -99,6 +100,11 @@ Route::get('traking/blog', [TrackingController::class, 'blog']);
 Route::get('traking_detail_page/{id}', [TrackingController::class, 'traking_detail_page']);
 Route::get('tracking_detail_product/{id}', [TrackingController::class, 'tracking_detail_product']);
 Route::get('tracking_detail_blog/{id}', [TrackingController::class, 'tracking_detail_blog']);
+
+Route::get('driver/user', [DriverController::class, 'index']);
+Route::get('driver/{id}', [DriverController::class, 'order']);
+Route::get('map/{id}', [DriverController::class, 'map']);
+
 });
 
 Route::post('tracking_page', [TrackingController::class, 'tracking_page']);

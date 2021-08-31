@@ -11,6 +11,8 @@ use App\Models\Order;
 use App\Models\Usertraking;
 use App\Models\Order_details;
 use App\Models\Comment;
+use App\Models\Pagetracking;
+
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -33,8 +35,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    //[082126QD]Fix login for admin
     public function index(Request $request)
-    {   
+    {  
        if(isset(Auth::user()->id)&&Auth::user()->role=="admin")
        {
                return redirect('admin');

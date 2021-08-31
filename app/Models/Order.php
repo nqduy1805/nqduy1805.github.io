@@ -10,7 +10,7 @@ class Order extends Eloquent
  protected $connection = 'mongodb';
     protected $collection = 'order';
     protected $fillable = [
-        'user_id','order_total','order_status','postcode','adress1','adress2','name','phone','email','delivery','payment','card_number','discount'
+        'user_id','order_total','order_status','postcode','adress1','adress2','name','phone','email','delivery','payment','card_number','discount','driver_id'
     ];
       public function User(){
         return $this->belongsTo(User::class,'user_id','_id');

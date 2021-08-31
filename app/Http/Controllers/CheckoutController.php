@@ -40,6 +40,7 @@ class CheckoutController extends Controller
         $order->name = $data['name'];
         $order->phone = $data['phone'];
         $order->email = $data['email'];
+        //$order->driver_id = '612c35ce516400001e000fa4';
         $order->save();   
         $order_id=$order->id;
         session()->put('order_id',$order_id);
@@ -105,6 +106,7 @@ class CheckoutController extends Controller
         $order->discount =-$discount;
         $order->save(); 
         //mail customer
+        //[082125QD]Send mail confirm order
         $order_detail = Order_details::where('order_id',session('order_id'))->get();
         $to_name="Shop thoi trang";
         $to_email=$order->email;

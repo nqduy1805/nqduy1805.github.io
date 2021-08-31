@@ -1,3 +1,4 @@
+    {{-- //[082130QD]load driver's orders when selected driver --}}
 @extends('templates.layout_admin')
 @section('content')
 <div class="table-agile-info">
@@ -29,6 +30,11 @@
             <th data-breakpoints="xs">Email</th>
             <th data-breakpoints="xs">Total</th>
             <th data-breakpoints="xs">Status</th>
+            <th data-breakpoints="xs"><form action="{{URL::to('map/'.$id)}}" method="GET">
+                                @csrf
+             <button onclick="" class="btn btn-primary ">show map</button> 
+            </form>    
+            </th>
          </tr>
         </thead>
         <tbody>
@@ -41,10 +47,6 @@
             <td>${{$od->order_total}}</td>
             <td>{{$od->order_status}}</td>
             <td>
-            <form action="{{URL::to('detail_order/'.$od->id)}}" method="GET">
-                                @csrf
-             <button onclick="" class="btn btn-primary ">Detail</button> 
-            </form>      
             </td>
 
           </tr>

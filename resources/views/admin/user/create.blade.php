@@ -72,6 +72,7 @@
                                 <option value="author">author</option>
                                 <option value="admin">admin</option>
                                 <option value="customer_author">customer and author</option>
+                                <option value="driver">driver</option>
                                 </select>
                         </div>
                       </div>

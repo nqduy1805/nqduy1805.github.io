@@ -159,6 +159,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('traking/blog')}}">Blog</a></li>
                     </ul>
                 </li>
+                  <li class="sub-menu">
+                    <a href="{{route('user.index')}}">
+                        <i class="fa fa-tasks"></i>
+                        <span>Driver</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{URL::to('driver/user')}}">List</a></li>
+                    </ul>
+                </li>
             </ul>            </div>
         <!-- sidebar menu end-->
     </div>

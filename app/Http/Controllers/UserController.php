@@ -56,6 +56,7 @@ class UserController extends Controller
         $user->gender = $data['gender'];
         $user->phone = $data['phone'];
         $user->status = $data['status'];
+        $user->ip_adress = \Request::ip();
         $user->password = Hash::make($data['password']);
         $user->save();
         return redirect()->back()->with('status','add successs');     }

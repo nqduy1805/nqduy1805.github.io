@@ -1,11 +1,11 @@
 { 
     "_id" : ObjectId("612253b3953c0000660011fa"), 
     "user_id" : "612132056d7b00006100591a", 
-    "order_status" : "complete", 
+    "order_status" : "driver", 
     "updated_at" : ISODate("2021-08-23T03:20:31.530+0000"), 
     "created_at" : ISODate("2021-08-22T13:40:03.473+0000"), 
-    "adress1" : "Phú Yên", 
-    "adress2" : "Phú Yên", 
+    "adress1" : "Huy Tùng, 69 Tản Đà, Tuy Hoà, Phú Yên 621000, Vietnam", 
+    "adress2" : "109.31314453279663,13.092341554033766", 
     "email" : "0@gmail.com", 
     "name" : "Nguyễn Quốc Duy", 
     "phone" : "0344332280", 
@@ -15,14 +15,27 @@
     "payment" : "Discover", 
     "discount" : -200.0, 
     "order_total" : 2903.0499999999997, 
-    "status" : "complete"
+    "status" : "complete", 
+    "driver_id" : "612c35ce516400001e000fa4"
 }
 { 
     "_id" : ObjectId("6122547a953c0000660011fe"), 
     "user_id" : "612132056d7b00006100591a", 
-    "order_status" : "draft", 
-    "updated_at" : ISODate("2021-08-22T13:43:22.874+0000"), 
-    "created_at" : ISODate("2021-08-22T13:43:22.874+0000")
+    "order_status" : "driver", 
+    "updated_at" : ISODate("2021-08-30T01:49:01.079+0000"), 
+    "created_at" : ISODate("2021-08-22T13:43:22.874+0000"), 
+    "adress1" : "Long Beach Hotel, Tuy Hoà, Phú Yên 621200, Vietnam", 
+    "adress2" : "109.31079517235207,13.097893598476844", 
+    "driver_id" : "612c35ce516400001e000fa4", 
+    "email" : "0@gmail.com", 
+    "name" : "Nguyễn Quốc Duy", 
+    "phone" : "0344332280", 
+    "postcode" : "123", 
+    "delivery" : "Premium", 
+    "card_number" : "1231231", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_total" : 3228.2
 }
 { 
     "_id" : ObjectId("61225583953c0000660011ff"), 
@@ -30,7 +43,7 @@
     "adress1" : "a", 
     "adress2" : "a", 
     "name" : "a", 
-    "phone" : "a", 
+    "phone" : "0344332280", 
     "email" : "a", 
     "updated_at" : ISODate("2021-08-23T03:20:48.608+0000"), 
     "created_at" : ISODate("2021-08-22T13:47:47.355+0000"), 
@@ -39,7 +52,8 @@
     "payment" : "Discover", 
     "discount" : -407.63599999999997, 
     "order_status" : "complete", 
-    "order_total" : 1630.544
+    "order_total" : 1630.544, 
+    "driver_id" : "612c35e4516400001e000fa5"
 }
 { 
     "_id" : ObjectId("6122576a953c000066001202"), 
@@ -47,7 +61,7 @@
     "adress1" : "a", 
     "adress2" : "a", 
     "name" : "a", 
-    "phone" : "a", 
+    "phone" : "0344332280", 
     "email" : "a", 
     "updated_at" : ISODate("2021-08-23T03:21:44.602+0000"), 
     "created_at" : ISODate("2021-08-22T13:55:54.011+0000"), 
@@ -64,24 +78,24 @@
     "adress1" : "a", 
     "adress2" : "a", 
     "name" : "a", 
-    "phone" : "a", 
+    "phone" : "0344332280", 
     "email" : "a", 
-    "updated_at" : ISODate("2021-08-23T03:19:36.054+0000"), 
+    "updated_at" : ISODate("2021-08-25T17:07:32.993+0000"), 
     "created_at" : ISODate("2021-08-22T13:57:38.128+0000"), 
     "delivery" : "Excluseve", 
     "card_number" : "12321", 
     "payment" : "Skrill", 
     "discount" : -407.63599999999997, 
-    "order_status" : "processing", 
+    "order_status" : "complete", 
     "order_total" : 1630.544
 }
 { 
     "_id" : ObjectId("612259b7953c00006600120d"), 
     "postcode" : "1312", 
-    "adress1" : "a", 
-    "adress2" : "a", 
+    "adress1" : "Tung Cofee-Tuy Hoa-Phu Yen, 123 Nguyễn Trãi, Tuy Hoà, Phú Yên 621200, Vietnam", 
+    "adress2" : "109.31338364561066,13.091435988033552", 
     "name" : "a", 
-    "phone" : "a", 
+    "phone" : "0344332280", 
     "email" : "a", 
     "updated_at" : ISODate("2021-08-22T14:05:59.201+0000"), 
     "created_at" : ISODate("2021-08-22T14:05:43.858+0000"), 
@@ -89,6 +103,361 @@
     "card_number" : "Number", 
     "payment" : "Discover", 
     "discount" : NumberInt(0), 
+    "order_status" : "driver", 
+    "order_total" : 7196.4, 
+    "driver_id" : "612c35ce516400001e000fa4"
+}
+{ 
+    "_id" : ObjectId("6125c8dbea2f000076006116"), 
+    "postcode" : "123", 
+    "adress1" : "Trieu Dang Hotel, Tuy Hoà, Phú Yên 621200, Vietnam", 
+    "adress2" : "12313", 
+    "name" : "13132131", 
+    "phone" : "0344332280", 
+    "email" : "1313123123", 
+    "updated_at" : ISODate("2021-08-25T04:57:20.881+0000"), 
+    "created_at" : ISODate("2021-08-25T04:36:43.413+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "1231231", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "driver", 
+    "order_total" : 287.99, 
+    "driver_id" : "612c35ce516400001e000fa4"
+}
+{ 
+    "_id" : ObjectId("6125cdf1ea2f00007600611b"), 
+    "postcode" : "123", 
+    "adress1" : "13", 
+    "adress2" : "12313", 
+    "name" : "13132131", 
+    "phone" : "1313131323", 
+    "email" : "1313123123", 
+    "updated_at" : ISODate("2021-08-25T04:58:51.644+0000"), 
+    "created_at" : ISODate("2021-08-25T04:58:25.397+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
     "order_status" : "processing", 
-    "order_total" : 7196.4
+    "order_total" : 0.0, 
+    "driver_id" : "612c35e4516400001e000fa5"
+}
+{ 
+    "_id" : ObjectId("6125cf63ea2f00007600611d"), 
+    "postcode" : "1231", 
+    "adress1" : "1321323", 
+    "adress2" : "13123", 
+    "name" : "3123", 
+    "phone" : "131323131", 
+    "email" : "323123313", 
+    "updated_at" : ISODate("2021-08-25T05:05:32.980+0000"), 
+    "created_at" : ISODate("2021-08-25T05:04:35.506+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "12313132", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 0.0
+}
+{ 
+    "_id" : ObjectId("6125cfe0ea2f00007600611f"), 
+    "postcode" : "123", 
+    "adress1" : "3123", 
+    "adress2" : "13", 
+    "name" : "3131313", 
+    "phone" : "31313", 
+    "email" : "3213132", 
+    "updated_at" : ISODate("2021-08-25T05:28:32.806+0000"), 
+    "created_at" : ISODate("2021-08-25T05:06:40.809+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "123123", 
+    "payment" : "Skrill", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 108.0
+}
+{ 
+    "_id" : ObjectId("6125d5a5ea2f00007600612f"), 
+    "postcode" : "13", 
+    "adress1" : "3", 
+    "adress2" : "123131", 
+    "name" : "3", 
+    "phone" : "3", 
+    "email" : "13", 
+    "updated_at" : ISODate("2021-08-25T05:31:26.485+0000"), 
+    "created_at" : ISODate("2021-08-25T05:31:17.229+0000"), 
+    "delivery" : "Excluseve", 
+    "card_number" : "Number", 
+    "payment" : "PayPal", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 287.99
+}
+{ 
+    "_id" : ObjectId("6125d5c2ea2f000076006131"), 
+    "postcode" : "13", 
+    "adress1" : "3", 
+    "adress2" : "123131", 
+    "name" : "3", 
+    "phone" : "3", 
+    "email" : "13", 
+    "updated_at" : ISODate("2021-08-25T05:31:55.548+0000"), 
+    "created_at" : ISODate("2021-08-25T05:31:46.060+0000"), 
+    "delivery" : "Excluseve", 
+    "card_number" : "Number", 
+    "payment" : "Skrill", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 0.0
+}
+{ 
+    "_id" : ObjectId("6125d634ea2f000076006132"), 
+    "postcode" : "32", 
+    "adress1" : "1313", 
+    "adress2" : "3", 
+    "name" : "313131", 
+    "phone" : "313123", 
+    "email" : "123", 
+    "updated_at" : ISODate("2021-08-25T05:33:51.371+0000"), 
+    "created_at" : ISODate("2021-08-25T05:33:40.731+0000"), 
+    "delivery" : "VIP", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 108.0
+}
+{ 
+    "_id" : ObjectId("6125d69fea2f000076006134"), 
+    "postcode" : "23", 
+    "adress1" : "312313", 
+    "adress2" : "313", 
+    "name" : "321313", 
+    "phone" : "313", 
+    "email" : "32", 
+    "updated_at" : ISODate("2021-08-25T05:35:42.774+0000"), 
+    "created_at" : ISODate("2021-08-25T05:35:27.523+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "1321", 
+    "payment" : "Skrill", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 287.99
+}
+{ 
+    "_id" : ObjectId("6125d6cdea2f000076006136"), 
+    "postcode" : "123", 
+    "adress1" : "23", 
+    "adress2" : "13", 
+    "name" : "1313", 
+    "phone" : "13", 
+    "email" : "313", 
+    "updated_at" : ISODate("2021-08-25T05:36:53.132+0000"), 
+    "created_at" : ISODate("2021-08-25T05:36:13.911+0000"), 
+    "delivery" : "VIP", 
+    "card_number" : "13123", 
+    "payment" : "Skrill", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 1079.1
+}
+{ 
+    "_id" : ObjectId("6125db1fea2f00007600613a"), 
+    "postcode" : "1312321", 
+    "adress1" : "123", 
+    "adress2" : "3243", 
+    "name" : "2433", 
+    "phone" : "2342", 
+    "email" : "42432", 
+    "updated_at" : ISODate("2021-08-25T05:54:49.185+0000"), 
+    "created_at" : ISODate("2021-08-25T05:54:39.016+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 287.99
+}
+{ 
+    "_id" : ObjectId("6125dc34ea2f00007600613d"), 
+    "postcode" : "23", 
+    "adress1" : "32131", 
+    "adress2" : "31321", 
+    "name" : "3123", 
+    "phone" : "312313", 
+    "email" : "312", 
+    "updated_at" : ISODate("2021-08-25T05:59:24.822+0000"), 
+    "created_at" : ISODate("2021-08-25T05:59:16.368+0000"), 
+    "delivery" : "Excluseve", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 1079.1
+}
+{ 
+    "_id" : ObjectId("6125dde3ea2f00007600613f"), 
+    "postcode" : "123", 
+    "adress1" : "13123", 
+    "adress2" : "313", 
+    "name" : "1313", 
+    "phone" : "1231", 
+    "email" : "3213", 
+    "updated_at" : ISODate("2021-08-25T06:06:36.040+0000"), 
+    "created_at" : ISODate("2021-08-25T06:06:27.409+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 287.99
+}
+{ 
+    "_id" : ObjectId("6125e46bea2f000076006142"), 
+    "postcode" : "123", 
+    "adress1" : "1312", 
+    "adress2" : "312", 
+    "name" : "3123", 
+    "phone" : "1312", 
+    "email" : "13123", 
+    "updated_at" : ISODate("2021-08-25T06:45:53.443+0000"), 
+    "created_at" : ISODate("2021-08-25T06:34:19.769+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 1180.41
+}
+{ 
+    "_id" : ObjectId("6125e81dea2f000076006146"), 
+    "postcode" : "13", 
+    "adress1" : "1313", 
+    "adress2" : "313", 
+    "name" : "3", 
+    "phone" : "123", 
+    "email" : "312", 
+    "updated_at" : ISODate("2021-08-25T06:52:39.898+0000"), 
+    "created_at" : ISODate("2021-08-25T06:50:05.884+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 1079.1
+}
+{ 
+    "_id" : ObjectId("6125e93dea2f00007600614a"), 
+    "postcode" : "13", 
+    "adress1" : "31", 
+    "adress2" : "3131", 
+    "name" : "duy", 
+    "phone" : "1321313", 
+    "email" : "nqduy1805@gmail.com", 
+    "updated_at" : ISODate("2021-08-25T06:55:01.788+0000"), 
+    "created_at" : ISODate("2021-08-25T06:54:53.832+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : NumberInt(0), 
+    "order_status" : "processing", 
+    "order_total" : 2360.82
+}
+{ 
+    "_id" : ObjectId("6125eb68ea2f00007600614c"), 
+    "postcode" : "12321", 
+    "adress1" : "Phu Yen", 
+    "adress2" : "Phu Yen", 
+    "name" : "Nguyễn Quốc Duy", 
+    "phone" : "01697695724", 
+    "email" : "nqduy@gmail.com", 
+    "updated_at" : ISODate("2021-08-25T07:04:18.424+0000"), 
+    "created_at" : ISODate("2021-08-25T07:04:08.362+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover", 
+    "discount" : -200.0, 
+    "order_status" : "processing", 
+    "order_total" : 879.0999999999999
+}
+{ 
+    "_id" : ObjectId("6125ed70ea2f000076006152"), 
+    "postcode" : "1312321", 
+    "adress1" : "phu yen", 
+    "adress2" : "Phu Yen", 
+    "name" : "Nguyễn Quốc Duy", 
+    "phone" : "0344332280", 
+    "email" : "nqduy1805@gmail.com", 
+    "updated_at" : ISODate("2021-08-25T07:13:01.906+0000"), 
+    "created_at" : ISODate("2021-08-25T07:12:48.859+0000"), 
+    "delivery" : "Excluseve", 
+    "card_number" : "Number", 
+    "payment" : "PayPal", 
+    "discount" : -200.0, 
+    "order_status" : "processing", 
+    "order_total" : 4885.37
+}
+{ 
+    "_id" : ObjectId("6125f32eea2f00007600615e"), 
+    "postcode" : "123", 
+    "adress1" : "313", 
+    "adress2" : "313", 
+    "name" : "313", 
+    "phone" : "1313", 
+    "email" : "13", 
+    "updated_at" : ISODate("2021-08-25T07:37:28.477+0000"), 
+    "created_at" : ISODate("2021-08-25T07:37:18.918+0000"), 
+    "delivery" : "Premium", 
+    "card_number" : "Number", 
+    "payment" : "Discover"
+}
+{ 
+    "_id" : ObjectId("61265275b04700001f00539b"), 
+    "user_id" : "611e1bb47820000022003d54", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-25T14:23:49.369+0000"), 
+    "created_at" : ISODate("2021-08-25T14:23:49.369+0000")
+}
+{ 
+    "_id" : ObjectId("6126fd3c23000000a9002b09"), 
+    "user_id" : "6126fd3b23000000a9002b08", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-26T02:32:28.553+0000"), 
+    "created_at" : ISODate("2021-08-26T02:32:28.553+0000")
+}
+{ 
+    "_id" : ObjectId("6126fdc623000000a9002b0d"), 
+    "user_id" : "6126fdc623000000a9002b0c", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-26T02:34:46.974+0000"), 
+    "created_at" : ISODate("2021-08-26T02:34:46.974+0000")
+}
+{ 
+    "_id" : ObjectId("6126fe9723000000a9002b10"), 
+    "user_id" : "6126fe9723000000a9002b0f", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-26T02:38:15.836+0000"), 
+    "created_at" : ISODate("2021-08-26T02:38:15.836+0000")
+}
+{ 
+    "_id" : ObjectId("6126ff1423000000a9002b13"), 
+    "user_id" : "6126ff1323000000a9002b12", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-26T02:40:20.549+0000"), 
+    "created_at" : ISODate("2021-08-26T02:40:20.549+0000")
+}
+{ 
+    "_id" : ObjectId("6127214923000000a9002b21"), 
+    "user_id" : "6127214923000000a9002b20", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-26T05:06:17.780+0000"), 
+    "created_at" : ISODate("2021-08-26T05:06:17.780+0000")
+}
+{ 
+    "_id" : ObjectId("612c3914516400001e000fac"), 
+    "user_id" : "612132056d7b00006100591a", 
+    "order_status" : "draft", 
+    "updated_at" : ISODate("2021-08-30T01:49:08.250+0000"), 
+    "created_at" : ISODate("2021-08-30T01:49:08.250+0000")
 }

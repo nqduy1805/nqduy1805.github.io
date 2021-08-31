@@ -102,7 +102,7 @@ class CartController extends Controller
         }
         return view('pages.shopping_bag')->with(get_defined_vars());
     }
-    
+    //[082126QD]Create lovelist
      public function add_lovelist($id)
     {
         if(isset(Auth::user()->id)){

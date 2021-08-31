@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 namespace App\Http\Controllers;
 
@@ -18,7 +18,7 @@ use DB;
 
 class TrackingController extends Controller
 {
-   
+   //[082123QD] how mani visitor for product and blog / how long
     public function tracking_page(Request $request)
     {
         $Page=Pagetracking::where('tracking_id',session('id_traking'))->where('page',session('page'))->first();
@@ -28,7 +28,7 @@ class TrackingController extends Controller
         $Pagetracking->times=$Pagetracking->times+1;
         $Pagetracking->save();
     }
-        return 'thanhcong';
+    return 'thành công';
     }
      
     public function user()
@@ -71,7 +71,7 @@ class TrackingController extends Controller
     {
         $blog = Blog::OrderBy('product_view','DESC')->paginate(5);
       return view('admin.tracking.blog')->with(get_defined_vars());      }
-
+          //[082123QD]how many click on CTA store: phone, email
        public function tracking_pm(Request $request)
         {        $usertraking = Usertraking::where('_id',session('id_traking'))->first();
        if($request->pm=='mail')

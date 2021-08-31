@@ -66,6 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //[082126QD]Fix send mail when register
              $to_name="Shop thoi trang";
         $to_email=$data['email'];
         $data1= array("email"=>$data['email'],"phone"=>$data['phone'],"name"=>$data['name'],"password"=>$data['password'],"adress"=>$data['adress']);

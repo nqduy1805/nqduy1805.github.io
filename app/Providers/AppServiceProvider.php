@@ -40,6 +40,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($view){
             //session()->flush();
               if(isset(Auth::user()->id)){
+             //update IP user
+             Auth::user()->ip_adress=\Request::ip();
+            Auth::user()->save();
+
             $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
                          if($draft)   {    $order_id=$draft->id;}
                       else 
@@ -112,7 +116,7 @@ class AppServiceProvider extends ServiceProvider
           $ip_adress=\Request::ip();
           $datenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H d-m-Y');
           $date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
-
+          //[082123QD] how many visitor for store 
           if(session('id_traking')==null)
           {$usertraking=new Usertraking();
            $usertraking->ip_adress=$ip_adress;
@@ -121,7 +125,8 @@ class AppServiceProvider extends ServiceProvider
            $usertraking->time=0;
            $usertraking->mail_times=0;
            $usertraking->phone_times=0;
-
+           
+           //[082123QD] where is visit come from?
            $ip_adress='14.233.178.189';
            $url='https://ipinfo.io/'.$ip_adress;
            $ch=curl_init($url);
@@ -132,10 +137,10 @@ class AppServiceProvider extends ServiceProvider
            $usertraking->city=$ar->city;
            $usertraking->region=$ar->region;
            $usertraking->country=$ar->country;
-
            $usertraking->save();
            session()->put('id_traking',$usertraking->id);
        }
+           //[082123QD] how long stay on store
             if(session('id_traking')!=null)
             {
             $timenow = Carbon::now('Asia/Ho_Chi_Minh')->format('s:i:H');
@@ -154,6 +159,7 @@ class AppServiceProvider extends ServiceProvider
             $hour=((int)$minute1-(int)$minute)/60;
             $usertraking->time=$hour.':'.$minute.':'.$second;
             $usertraking->save();
+               //[082123QD] how mani visitor for product and blog / how long
             if(session('page')!=null)
             { $Page=Pagetracking::where('tracking_id',session('id_traking'))->where('page',session('page'))->first();
                 if($Page)

@@ -1,9 +1,10 @@
+{{-- [082130QD]load driver list--}}
 @extends('templates.layout_admin')
 @section('content')
 <div class="table-agile-info">
  <div class="panel panel-default">
     <div class="panel-heading">
-      Order Table
+      User Table
     </div>
     <div>
          @if (session('status'))
@@ -22,29 +23,36 @@
           &quot;enabled&quot;: true
         }}">
         <thead>
+
           <tr>
             <th data-breakpoints="xs">Name</th>
-            <th data-breakpoints="xs">adress</th>
-            <th data-breakpoints="xs">Phone</th>
             <th data-breakpoints="xs">Email</th>
-            <th data-breakpoints="xs">Total</th>
+            <th data-breakpoints="xs">Address</th>
+            <th data-breakpoints="xs">Phone</th>
+            <th data-breakpoints="xs">Role</th>
             <th data-breakpoints="xs">Status</th>
-         </tr>
+            <th data-breakpoints="xs">                        
+             <a href="{{route('user.create')}}" class="btn btn-primary ">Add</a>
+            </th>     
+          </tr>
         </thead>
         <tbody>
-           @foreach($order as $od)
+           @foreach($user as $use)
           <tr data-expanded="true">
-            <td>{{$od->name}}</td>
-            <td>{{$od->adress1}}</td>
-            <td>{{$od->phone}}</td>
-            <td>{{$od->email}}</td>
-            <td>${{$od->order_total}}</td>
-            <td>{{$od->order_status}}</td>
+            <td>{{$use->name}}</td>
+            <td>{{$use->email}}</td>
+            <td>{{$use->address}}</td>
+            <td>{{$use->phone}}</td>
+            <td>{{$use->role}}</td>
+           <td>{{$use->status}}</td>
+
             <td>
-            <form action="{{URL::to('detail_order/'.$od->id)}}" method="GET">
+             <form action="{{URL::to('driver/'.$use->id)}}" method="GET">
                                 @csrf
-             <button onclick="" class="btn btn-primary ">Detail</button> 
-            </form>      
+                <a href="{{route('user.edit',[$use->id])}}" class="btn btn-primary ">Edit</a>
+
+             <button class="btn btn-danger">Orders</button> 
+                                </form>          
             </td>
 
           </tr>
