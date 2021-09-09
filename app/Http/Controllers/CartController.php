@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -18,6 +17,7 @@ class CartController extends Controller
 {
    public function add_bag(Request $request,$id)
     {
+                echo $request->size;
         if($id==0)
         {
             $id=$request->product_id;
@@ -41,6 +41,7 @@ class CartController extends Controller
         $order_dt->order_qty=$request->quantity+$order_dt->order_qty;
         $order_dt->order_subtotal=$order_dt->order_qty*$product->product_price;
         $order_dt->save();
+
         }
         else{
         $order_details = new Order_details();
@@ -94,7 +95,14 @@ class CartController extends Controller
     }
 
     public function shopping_bag(Request $request)
-    {
+    {    //[092108QD]Remove products from cart when out of stock
+        $cartcheck=cart::content();
+        foreach($cartcheck as $ca)
+        {
+          $productcheck=Product::find($ca->id);
+          if($productcheck->product_quality<$ca->qty)
+            CART::REMOVE($ca->rowId);
+        }
         if($request->coupon)
         {
         $coupon=Coupon::where('coupon_code',$request->coupon)->first();
@@ -128,4 +136,28 @@ class CartController extends Controller
         return redirect()->back();
 
     }
+    //[092108QD]Check remaining quantity
+      public function checkquantity(Request $request)
+    {
+                $currentQuatity=0;
+                $product = Product::find($request->id);
+        if(isset(Auth::user()->id)){
+        $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
+        $order_details=Order_details::where('order_id',$draft->id)->where('product_id',$request->id)->first();
+        if($order_details) $currentQuatity=$order_details->order_qty;
+        if($product->product_quality>=$request->qty+$currentQuatity)
+            $message='';
+        else $message='Not enough quantity in stock';
+    }
+    else{
+        $cart=cart::content();
+        foreach($cart as $ca)
+        if($ca->id==$request->id) $currentQuatity=$ca->qty;
+        if($product->product_quality>=$request->qty+$currentQuatity)
+         $message='';
+        else $message='Not enough quantity in stock';
+    }
+            return $message;
+        }
+
 }

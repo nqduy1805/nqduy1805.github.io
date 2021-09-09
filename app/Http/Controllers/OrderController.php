@@ -125,4 +125,13 @@ public function index(Request $request)
         $product_views=Product::orderBy('product_view','desc')->limit(10)->get();    
       return view('admin.dashboard')->with(get_defined_vars());
     }
+    //[092108QD] Create product quantity management for the management page
+        public function quantity()
+    {
+      $product = Product::orderBy('product_quality','ASC')->paginate(5);
+      foreach ($product as $value) {
+       $value->product_sold=Order_details::where('product_id', $value->id)->sum('order_qty');
+      }
+      return view('admin.product.qtymanagement')->with(get_defined_vars());
+    }
 }

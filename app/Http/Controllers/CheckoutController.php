@@ -62,9 +62,7 @@ class CheckoutController extends Controller
         $order->payment = $data['radio'];
         $order->card_number = $data['card_number'];
         $order->save(); 
-
         return view('pages.checkout4')->with(get_defined_vars());
-
     }
      public function checkout5(Request $request)
     {   
@@ -74,6 +72,35 @@ class CheckoutController extends Controller
         $draft=Order::where('user_id',Auth::user()->id)->where('order_status','draft')->first(); 
         $cart=Order_details::where('order_id',$draft->id)->get();
                   $total=(float)Order_details::where('order_id',$draft->id)->get()->sum('order_subtotal');
+                  foreach($cart as $ca)
+        {
+        $product=Product::find($ca->product_id);
+        $product->product_quality=$product->product_quality-(int)$ca->order_qty;
+        $product->save();
+        //[092108QD]Remove products from cart when out of stock when user logged and use order with draf status
+            $deleteOrder=Order::where('order_status','draft')->get();
+            foreach($deleteOrder as $dl)
+            {
+             $Order_details=Order_details::where('order_id',$dl->id)->where('product_id',$product->id)->where('order_qty','>',$product->product_quality)->first();
+             if($Order_details){
+             $Order_detail=Order_details::find($Order_details->id);
+              $Order_detail->delete();
+            }
+            }
+       /*  if($product->product_quality==0)
+        {
+            $deleteOrder=Order::where('order_status','draft')->get();
+            foreach($deleteOrder as $dl)
+            {
+             $Order_details=Order_details::where('order_id',$dl->id)->where('product_id',$product->id)->first();
+             if($Order_details){
+             $Order_detail=Order_details::find($Order_details->id);
+             if($Order_detail)
+              $Order_detail->delete();
+            }
+            }
+        }*/
+        }
          }
             else{
             $cart=Cart::content();
@@ -91,6 +118,22 @@ class CheckoutController extends Controller
         $order_details->order_subtotal=(float)$ca->qty*$ca->price;
         $order_details->order_size=$ca->size;
         $order_details->save();
+        $product=Product::find($ca->id);
+        $product->product_quality=$product->product_quality-(int)$ca->qty;
+        $product->save();
+        if($product->product_quality==0)
+        {
+            $deleteOrder=Order::where('order_status','draft')->get();
+            foreach($deleteOrder as $dl)
+            {
+             $Order_details=Order_details::where('order_id',$dl->id)->where('product_id',$product->id)->first();
+             if($Order_details){
+             $Order_detail=Order_details::find($Order_details->id);
+             if($Order_detail)
+              $Order_detail->delete();
+            }
+            }
+        }
         }
                 Cart::destroy();   
             }

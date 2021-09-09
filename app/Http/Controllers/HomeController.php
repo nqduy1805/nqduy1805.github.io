@@ -37,25 +37,25 @@ class HomeController extends Controller
      */
     //[082126QD]Fix login for admin
     public function index(Request $request)
-    {  
+    {   
        if(isset(Auth::user()->id)&&Auth::user()->role=="admin")
        {
                return redirect('admin');
        }
         else{
-                  $product = Product::orderBy('updated_at','desc')->limit(8)->get();  
+                  $product = Product::orderBy('created_at','desc')->where('product_quality','>',0)->limit(8)->get(); 
         return view('pages.home')->with(get_defined_vars());  
         }
     }
     public function detail_product($id)
     {
-    
        $product = Product::find($id);
        $product->product_view= $product->product_view+1;
        $product->save();
        $size=$product->product_size;
        $size=explode(',',$size);
        $other_product = Product::where("category_id",$product->category_id)->limit(4)->get();
+       $message='';
        
         return view('pages.detail_product')->with(get_defined_vars());
     }
@@ -103,7 +103,7 @@ class HomeController extends Controller
 
          //output
         $category_page=Category::find($id);
-        $product = Product::where('category_id',$id)->where('product_name','like','%'.$search.'%')->where('product_price','>=',$amount_price_0)->where('product_price','<=',$amount_price_1)->where('product_size','like','%'.$size.'%')->orderBy($select_ft,$select_ft1)->paginate(9);
+        $product = Product::where('category_id',$id)->where('product_quality','>',0)->where('product_name','like','%'.$search.'%')->where('product_price','>=',$amount_price_0)->where('product_price','<=',$amount_price_1)->where('product_size','like','%'.$size.'%')->orderBy($select_ft,$select_ft1)->paginate(9);
         return view('pages.all_product')->with(get_defined_vars());
     }
       public function quickview(Request $request)

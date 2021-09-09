@@ -5,10 +5,9 @@
 		<section class="breadcrumb parallax margbot30"></section>
 		<!-- //BREADCRUMBS -->
 		
-		
 		<!-- TOVAR DETAILS -->
 		<section class="tovar_details padbot70">
-			
+
 			<!-- CONTAINER -->
 			<div class="container">
 				
@@ -83,6 +82,8 @@
 			           	 @endforeach
 			           	</select>
 								</div>
+{{-- 								[092108QD]Check remaining quantity--}}
+								<span class="message_inputqty" style="color: #FF0000;   font-size: 20px;"></span>
 								<div class="tovar_view_btn">
 							<div class="tovar_size_select">
                   <div class="clearfix">
@@ -91,13 +92,11 @@
                   <div class="buttons_added">
                     <input aria-label="quantity" class="input-qty" max="999999" min="1" name="quantity" type="number" value="1">
                   </div>
-                  
                 </div>
-						
-									<a><input type='submit' class="add_bag" name='' value='Add to bag'>	</a>	
+									<a><input style="float: left !important ;" type='submit' class="add_bag" name='' value='Add to bag'>	</a>
 									<a class="add_lovelist" href="javascript:void(0);" ><i class="fa fa-heart"></i></a>
 								</div>
-							</form>
+							</form >
 								<div class="tovar_shared clearfix">
 									<p>Share item with friends</p>
 									<ul>

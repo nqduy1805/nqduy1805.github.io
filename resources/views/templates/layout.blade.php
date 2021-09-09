@@ -22,7 +22,22 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style type="text/css">
+	.cart_list {
+   height: @if($cart->count()==0){{'10'}} @elseif($cart->count()==1) {{'200'}} @else {{'250'}}px @endif;
+  overflow-y: auto;
+  scroll-snap-type: y;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+.love_li{
+	height: @if($lovelist->count()==0){{'10'}} @elseif($lovelist->count()==1) {{'200'}} @else {{'250'}}px @endif;
+  overflow-y: auto;
+  scroll-snap-type: y;
+}
 
+</style>
 </head>
 <body>
 <!-- PRELOADER -->
@@ -352,7 +367,7 @@
 			</div><!-- //COPYRIGHT -->
 		</footer><!-- //FOOTER -->
 	</div><!-- //PAGE -->
-{{-- 082120QD create purchase feature in quickview--}}
+{{-- [082120QD] create purchase feature in quickview--}}
  <!-- TOVAR MODAL CONTENT -->
 <div id="modal-body" class="clearfix" style="">
    <div id="tovar_content" style="opacity: 1;"><div class="tover_view_page element_fade_in">
@@ -392,7 +407,7 @@
                   <div class="pull-right tovar_view_price price_qv sale_price"></div>
                    <div class="pull-right tovar_view_price  price_qv_2 saled_price"></div>
                 </div>
-               
+                <span class="message_inputqty" style="color: #FF0000;   font-size: 20px;"></span>
                 <div class="tovar_size_select">
                   <div class="clearfix">
                     <p class="pull-left">Chọn số lượng</p>
@@ -404,7 +419,7 @@
                 <div class="tovar_view_btn">
                 	<div class='select_quickview'>
                 	</div>
-				<a><input type='submit' class="add_bag" name='' value='Add to bag'>	</a>
+				<a><input style="float: left !important ;"  type='submit' class="add_bag" name='' value='Add to bag'>	</a>
 			<a class="add_lovelist" href="javascript:void(0);" ><i class="fa fa-heart"></i></a>
            </div>
       </form>
@@ -435,6 +450,7 @@
              method:"POST",
              data:{product_id:product_id,_token:$token}, 
                    success:function(data){
+                   	$('.input-qty').val('1');
                   $('.select_quickview').html(data.product_size);
                  $('#prod_id').val(product_id);
                  $('.tovar_view_title').text(data.product_name);
@@ -470,8 +486,7 @@
              url:"{{URL::to('tracking_page')}}",
              method:"POST",
              data:{_token:$token}, 
-                           success:function(data){
-                           	alert(data);
+             success:function(data){
                       }
                   });
 	   }
@@ -499,21 +514,23 @@
 
     
 </script>
-<style type="text/css">
-	.cart_list {
-   height: @if($cart->count()==0){{'10'}} @elseif($cart->count()==1) {{'200'}} @else {{'250'}}px @endif;
-  overflow-y: auto;
-  scroll-snap-type: y;
-}
-::-webkit-scrollbar { 
-    display: none; 
-}
-.love_li{
-	height: @if($lovelist->count()==0){{'10'}} @elseif($lovelist->count()==1) {{'200'}} @else {{'250'}}px @endif;
-  overflow-y: auto;
-  scroll-snap-type: y;
-}
+ <script type="text/javascript">
+                	$('.input-qty').on('input',function(){
+                		var qty=$('.input-qty').val();
+		              	var product_id=$('.tovar_article').text();
+                		var $token=$('#signup-token').val();
+                		if(Number(qty)>0)
+                    $.ajax({
+                     url:"{{URL::to('checkquantity')}}",
+                     method:"POST",
+                     data:{id:product_id,qty:qty,_token:$token}, 
+                           success:function(data){
+                          if(data=='')
+                          	$('.add_bag').attr('type', 'submit');
+                          else $('.add_bag').attr('type', 'button');
+                           $('.message_inputqty').text(data);
+                      }});                	});
+                </script>
 
-</style>
 </body>
 </html>

@@ -1,5 +1,5 @@
 @extends('templates.layout')
-
+{{-- [082125QD] Create contacts page --}}
 @section('content')
 		
 		<!-- BREADCRUMBS -->

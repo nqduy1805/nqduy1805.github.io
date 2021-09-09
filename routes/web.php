@@ -16,6 +16,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\MapController;
 
 
 
@@ -54,6 +55,7 @@ Route::post('delete_lovelist/{id}', [CartController::class, 'delete_lovelist']);
 
 Route::get('shopping_bag', [CartController::class, 'shopping_bag']);
 Route::post('add_bag/{id}', [CartController::class, 'add_bag']);
+Route::post('checkquantity', [CartController::class, 'checkquantity']);
 Route::post('delete_bag/{rowId}', [CartController::class, 'delete_bag']);
 Route::post('update_bag', [CartController::class, 'update_bag']);
 Route::get('checkout1', [CheckoutController::class, 'checkout1']);
@@ -78,6 +80,8 @@ Route::post('load_comment_blog', [ClientBlogController::class, 'load_comment']);
 Route::get('admin.login', [App\Http\Controllers\AdminController::class, 'login']);
 Route::group(['middleware' => 'role'], function() {
 Route::resource('category',CategoryController::class);
+//[092108QD] Create product quantity management for the management page
+Route::get('qtymanagement', [OrderController::class, 'quantity']);
 Route::resource('product',ProductController::class);
 Route::resource('blog',BlogController::class);
 Route::resource('order',OrderController::class);
@@ -106,7 +110,7 @@ Route::get('driver/{id}', [DriverController::class, 'order']);
 Route::get('map/{id}', [DriverController::class, 'map']);
 
 });
-
+Route::get('map', [MapController::class, 'map']);
 Route::post('tracking_page', [TrackingController::class, 'tracking_page']);
 Route::post('tracking_pm', [TrackingController::class, 'tracking_pm']);
 

@@ -107,6 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="sub">
 						<li><a href="{{route('product.index')}}">Table</a></li>
                         <li><a href="{{route('product.create')}}">Create</a></li>
+                        <li><a href="{{URL::to('qtymanagement')}}">Product</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

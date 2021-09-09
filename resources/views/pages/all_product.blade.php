@@ -9,7 +9,7 @@
       <!-- //CONTAINER --> 
       
     </section>		<!-- //BREADCRUMBS -->
-    
+    <pre>{{$cart2}}</pre>
    		<!-- SHOP BLOCK -->
 		<section class="shop">
 			<!-- CONTAINER -->

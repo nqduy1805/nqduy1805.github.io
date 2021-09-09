@@ -1,7 +1,4 @@
-    <?php
-
-namespace App\Http\Controllers;
-
+<?php namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
@@ -21,7 +18,8 @@ class TrackingController extends Controller
    //[082123QD] how mani visitor for product and blog / how long
     public function tracking_page(Request $request)
     {
-        $Page=Pagetracking::where('tracking_id',session('id_traking'))->where('page',session('page'))->first();
+    
+    $Page=Pagetracking::where('tracking_id',session('id_traking'))->where('page',session('page'))->first();
     if($Page)
         {
         $Pagetracking=Pagetracking::find($Page->id);

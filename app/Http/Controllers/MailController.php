@@ -116,20 +116,5 @@ class MailController extends Controller
         });
          return redirect()->back();
          }
-          public function map(Request $request)
-    { 
-        $adress='thanh thai quan 10 viet nam';
-        $adress=str_replace(' ', '+', $adress);
-           $url="https://api.mapbox.com/geocoding/v5/mapbox.places/".$adress.".json?limit=1&access_token=pk.eyJ1IjoidG51MTgwNSIsImEiOiJja3N1YTdvcm8xZWx0MnBvNXYzeGFqYm93In0.kUcWi0oiwYzXWXtDXkaFvg";
-           $ch=curl_init($url);
-               curl_setopt($ch,CURLOPT_RETURNTRANSFER,TRUE);
-           $data=curl_exec($ch);
-           curl_close($ch); 
-
-            $posi=strpos($data, '"coordinates":');
-            $stringpo=substr($data, $posi+15); 
-            $arr=explode(']',$stringpo);
-            $vitri= $arr[0];
-          return view('admin.driver.map')->with(get_defined_vars());
-    }
+       
 }

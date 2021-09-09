@@ -10,7 +10,7 @@ class Usertraking extends Eloquent
     protected $connection = 'mongodb';
     protected $collection = 'usertraking';
     protected $fillable = [
-        'ip_adress','date_visit','time','date','city','region','country','mail_times','phone_times'
+        'ip_adress','date_visit','time','date','city','region','country','mail_times','phone_times',
     ];
     
 }

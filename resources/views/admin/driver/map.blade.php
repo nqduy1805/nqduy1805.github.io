@@ -75,8 +75,22 @@ background-image: url("{{URL::to('frontend/images/tovar/mapbox-icon.png')}}");
     outline:none;
 
  }
-
-    </style>
+  .cart_list {
+   height: 110px;
+  overflow-y: auto;
+  scroll-snap-type: y;
+     font-size: 13px;
+}
+.cart_list2 {
+   height: 330px;
+  overflow-y: auto;
+  scroll-snap-type: y;
+     font-size: 13px;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+  </style>
   <script src="https://js.sentry-cdn.com/9c5feb5b248b49f79a585804c259febc.min.js" crossorigin="anonymous"></script>
 
 </head>
@@ -94,18 +108,33 @@ background-image: url("{{URL::to('frontend/images/tovar/mapbox-icon.png')}}");
   </div>
   <div class="w3-bar-block">
   <a class="w3-bar-item w3-button w3-green" href="?show_all=<?php if(isset($_GET['show_all'])){ if($_GET['show_all']=='on') echo 'off'; else echo 'on';} else echo 'off'; ?>"><?php if(isset($_GET['show_all'])) { if($_GET['show_all']=='on') echo "Show"; else echo 'Hide'; } else echo 'Show';?> all orders</a>
+  <a class="w3-bar-item w3-button " href="" style="background-color: #2ECCFA;">Driver</a>
   <div class="">
-    <div class=" w3-bar-block w3-card-4 ">
- <table class="table " ui-jq="footable" ui-options="{
-        &quot;paging&quot;: {
-          &quot;enabled&quot;: true
-        },
-        &quot;filtering&quot;: {
-          &quot;enabled&quot;: true
-        },
-        &quot;sorting&quot;: {
-          &quot;enabled&quot;: true
-        }}">
+    <div class=" w3-bar-block w3-card-4 cart_list ">
+  <table class="table " ui-jq="footable">
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">Show</th>
+            <th data-breakpoints="xs">adress</th>  
+         </tr>
+        </thead>
+        <tbody>
+          <?php $checked=[]; if(isset($_GET['chbox'])) $checked=$_GET['chbox'];?>
+           @foreach($order2 as $od)
+          <tr>
+           <td> <input class="filter_checkbox" type="checkbox" name="chbox[]" value={{$od->id}} @if(in_array($od->id, $checked)) checked @endif ></td>
+            <td>{{$od->adress1}}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table> 
+    </div>
+  </div>
+      <a class="w3-bar-item w3-button" href=""  style="background-color: #F7819F;">Orders</a>
+  </div>
+  <div class="">
+    <div class=" w3-bar-block w3-card-4 cart_list2 ">
+ <table class="table " ui-jq="footable">
         <thead>
           <tr>
             <th data-breakpoints="xs">Show</th>
@@ -143,7 +172,7 @@ const map = new mapboxgl.Map({
   zoom: 14
 });
 
-const start = [{{$driver->loc}}];
+const start = [{{$driver->locID}}];
 const end=[{{$next_order}}];
 // create a function to make a directions request
 async function getRoute(end) {
@@ -285,7 +314,7 @@ map.on('load', () => {
 
   // Add starting point to the map
   map.addLayer({
-    id: 'point',
+    id: 'end',
     type: 'circle',
     source: {
       type: 'geojson',
@@ -304,7 +333,7 @@ map.on('load', () => {
       }
     },
     paint: {
-      'circle-radius': 10,
+      'circle-radius': 4,
       'circle-color': '#3887be'
     }
   });

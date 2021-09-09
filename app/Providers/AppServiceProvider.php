@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
                      $order_id=$order->id;
                     } 
                       session()->put('order_id',$order_id);
-                     $cart=Cart::content();
+                    $cart=Cart::content();
                      if($cart)
                      {
                          foreach($cart as $ca)
@@ -77,6 +77,7 @@ class AppServiceProvider extends ServiceProvider
                      $order_details->order_subtotal=(float)$ca->qty*$ca->price;
                      $order_details->order_size=$ca->size;
                      $order_details->save();
+
                     }
                    
                     } 
@@ -98,11 +99,11 @@ class AppServiceProvider extends ServiceProvider
         $total=(float)Order_details::where('order_id',$draft->id)->get()->sum('order_subtotal');
         $lovelist=Lovelist::where('user_id',Auth::user()->id)->get();
          } else{
-                 $cart=Cart::content();
+                $cart=Cart::content();
                 $total=Cart::subtotal();
                 $total=str_replace(',','',$total);
-                 $total=(float)$total;
-                 $lovelist=Lovelist::where('user_id',session('id_traking'))->get();
+                $total=(float)$total;
+                $lovelist=Lovelist::where('user_id',session('id_traking'))->get();
             }
             if(session('coupon.coupon_type')=='percent')
             {

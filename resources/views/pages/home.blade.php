@@ -5,7 +5,7 @@
 				<!-- BREADCRUMBS -->
 		<section class="breadcrumb parallax margbot30"></section>
 		<!-- //BREADCRUMBS -->
-					
+						
 			<!-- CONTAINER -->
 <img src="frontend/images/slide/bestseller_1702_1920X658 (1).png" alt="" />			
 
@@ -47,5 +47,5 @@
 				</div><!-- //ROW -->
 			</div><!-- //CONTAINER -->
 		</section><!-- //TOVAR SECTION -->
-		
+
 @endsection
